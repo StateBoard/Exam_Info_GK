@@ -1,0 +1,150 @@
+﻿
+
+@{
+    ViewBag.Title = "Batch";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<h2 style="text-align:center">Batch</h2>
+
+<style>
+    #batch {
+        width: 200px;
+        padding: 8px;
+    }
+</style>
+
+<form id="batch">
+    <div class="container">
+        <div class="row">
+            <input type="hidden" id="ID" name="ID" />
+            <div class="col-sm-3">
+                <label> Batch</label><span style="color:Red">*</span><br />
+
+                @Html.TextBox("Batch")
+            </div>
+            <div class="col-sm-2">
+                <label></label><br />
+                <center>
+                    <input type="submit" value="Submit Batch" id="btn_batch" class="btn btn-success" />
+                </center>
+            </div>
+        </div><br /><br />
+        <center>
+            <table class="AppFormTable " style="background-color: #e7fafe;" id="tbl_admin">
+            </table>
+        </center>
+    </div>
+
+</form>
+
+<script>
+    $(document).ready(function () {
+
+        Bind_Part2();
+
+
+        $("#btn_batch").click(function (e) {
+            debugger
+            var formData = new FormData($(batch)[0]);
+            console.log(formData);
+            $.ajax({
+                url: "Batch",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (Data) {
+                    //Success_Alert(Data.Message);
+                    debugger;
+                    if (Data.Result) {
+                        alert(Data.Response);
+                        $(batch)[0].reset();
+                        $('#batch').find("#ID").val(0);
+                        Bind_Part2();
+                    }
+                    else {
+                        Error_Alert(Data.Response);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    Error_Alert(Data.Message);
+                }
+
+            });
+        });
+    });
+    function Bind_Part2() {
+        $.ajax({
+            url: "GetBatch",
+            type: "Get",
+            dataType: 'json',
+            data: {
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (Data) {
+                debugger
+                var temp = "";
+                temp += `<tr><td>Sr.No.</td><td>Batch</td><td>Active</td></tr>`;
+                $("#tbl_admin").empty();
+                $.each(Data.Response, function (i, data) {
+                    var editurl = "EditStudentInfo('/Home/GetBatchRecord/" + data.ID + "')";
+                    var delurl = "DelStudentInfo('/Home/DelBatchRecord/" + data.ID + "')";
+                    temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Batch + `</td><td>` + data.Active + `</td><td>` + `<input type = "button" value = "Edit" onclick = ` + editurl + ` class="Edit_Delete"/>` + `</td><td>` + `<input type = "button" value = "Act/Deact" onclick="` + delurl + `" class="Edit_Delete"/>` + `</td></tr>`;
+
+                });
+                $("#tbl_admin").append(temp);
+            },
+            error: function (e1, e2, e3) {
+                Error_Alert(Data.Message);
+            }
+        });
+    }
+
+
+    function EditStudentInfo(url) {
+        debugger
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (response) {
+                if (response.Result) {
+                    $('#Batch').val(response.Response.Batch);
+                    $('#batch').find("#ID").val(response.Response.ID);
+
+                }
+            }
+        });
+    }
+    function DelStudentInfo(url) {
+        debugger
+        if (confirm('Are you sure want to deactivate this record ?') == true) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: function (response) {
+                    if (response.Result) {
+                        Bind_Part2();
+                        alert(response.Response);
+                    }
+                    else {
+                        alert(response.Response);
+                    }
+                }
+            });
+        }
+    }
+
+
+</script>

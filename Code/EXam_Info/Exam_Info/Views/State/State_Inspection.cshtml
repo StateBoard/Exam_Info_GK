@@ -1,0 +1,251 @@
+﻿@model Exam_Info.Models.Tbl_Code_Master
+@{
+    ViewBag.Title = "State_Inspection";
+    Layout = "~/Views/Shared/State_LayoutPage.cshtml";
+
+    List<SelectListItem> Division_List = new List<SelectListItem>();
+    Division_List.Add(new SelectListItem { Text = "Pune", Value = "1" });
+    Division_List.Add(new SelectListItem { Text = "NAGPUR", Value = "2", });
+    Division_List.Add(new SelectListItem { Text = "AURANGABAD", Value = "3" });
+    Division_List.Add(new SelectListItem { Text = "MUMBAI", Value = "4" });
+    Division_List.Add(new SelectListItem { Text = "KOLHAPUR", Value = "5" });
+    Division_List.Add(new SelectListItem { Text = "AMRAVATI", Value = "6" });
+    Division_List.Add(new SelectListItem { Text = "NASIK", Value = "7" });
+    Division_List.Add(new SelectListItem { Text = "LATUR", Value = "8" });
+    Division_List.Add(new SelectListItem { Text = "KOKAN", Value = "9" });
+
+}
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #division_name {
+        width: 400px;
+        padding: 8px;
+    }
+
+    #taluka_name {
+        width: 400px;
+        padding: 8px;
+    }
+
+    #district_name {
+        width: 400px;
+        padding: 8px;
+    }
+
+    #btn_submit {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>State Inspection</h2>
+    </div>
+    <div class="col-sm-6">
+        <input type="button" class="btn btn-success" id="btn_Excel" value="Download Excel"><br />
+
+    </div>
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<div class="table-responsive pt-3  ">
+    <div class="row">
+        <div class="col-sm-3">
+            <label for="Division_List">Select Division</label><span style="color:Red">*</span>
+
+            @Html.DropDownListFor(model => model.division_name, Division_List, "--Select Division--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.division_name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-3">
+            <label for="Division_List">Select District</label><span style="color:Red">*</span>
+
+            @Html.DropDownListFor(model => model.district_name, new SelectList(string.Empty, "Value", "Text"), "--Select District--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.district_name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-3">
+            <label for="Taluka_Code">Select Taluka</label><span style="color:Red">*</span>
+            @Html.DropDownListFor(model => model.taluka_name, new SelectList(string.Empty, "Value", "Text"), "--Select Taluka--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.taluka_name, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-2">
+            <label></label><br />
+            <input type="button" value="Submit" id="btn_sub" class="btn btn-success" />
+        </div>
+    </div>
+    <br />
+    <center>
+        <table class="AppFormTable " id="state_insp" style="background-color: #e7fafe;">
+        </table>
+    </center>
+    @*<div class="col-sm-6">
+            <input type="submit" class="btn btn-secondary btn-lg" id="btn_download" value="Download" style="background-color: #3eadcf;font-weight:bold; color:white; border:1px solid blue">
+
+        </div>*@
+    <br />
+
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#division_name").change(function () {
+        
+            $("#district_name").empty();
+            $.ajax({
+                type: 'POST',
+                url: '../State/Select_District',
+                dataType: 'json',
+                data: {
+                    div: $("#division_name").val(),
+                    distCode: $("#district_name").val(),
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#district_name").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+        $("#district_name").change(function () {
+
+            $("#taluka_name").empty();
+            $.ajax({
+                type: 'POST',
+                url: '../District/Get_Taluka',
+                dataType: 'json',
+                data: {
+                    distCode: $("#district_name").val()
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#taluka_name").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+
+        $("#btn_sub").click(function () {
+
+            Get_Inspection_Record("0");
+
+        });
+        $("#btn_Excel").click(function () {
+
+            Get_Inspection_Record("1");
+
+        });
+
+
+
+    });
+
+   
+    //var list2 = JSON.parse(JSON.stringify(data.Response));
+    //for (i in list2) {
+    //    var daate = list2[i].Date_Time;
+    //    function jsondate_to_normaldate(daate) {
+    //        var dateString = daate.substr(6);
+    //        var currentTime = new Date(parseInt(dateString));
+    //        var month = currentTime.getMonth() + 1;
+    //        var day = currentTime.getDate();
+    //        var year = currentTime.getFullYear();
+
+    //        var hour = currentTime.getHours();
+    //        var min = currentTime.getMinutes();
+          
+    //        var date = day + "-" + month + "-" + year + " " + hour + ":" + min + " " ;
+    //        return date;
+    //    }
+    //}
+
+    function Get_Inspection_Record(Excel) {
+        $.ajax({
+            type: 'POST',
+            url: '../State/State_Inspection',
+            dataType: 'json',
+            data: {
+                district: $("#district_name").val(),
+                taluka: $("#taluka_name").val(),
+                Excel: Excel
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (data) {
+
+                if (data.Result) {
+                    $("#state_insp").empty();
+                    
+                    var list2 = JSON.parse(JSON.stringify(data.Response));
+                    for (i in list2) {
+                        delete list2[i].ID;
+                        delete list2[i].Active;
+
+
+                        var aa = list2[i].Date_Time;
+                        var JavaScriptDate = new Date(parseInt(aa.substr(6)));
+                        var dateObject = new Date(JavaScriptDate);
+                        var daate = dateObject.getDate();
+                        var Month = dateObject.getMonth();
+                        var year = dateObject.getFullYear();
+                        list2[i].Date_Time = daate + "/" + Month + "/" + year;
+
+                      
+
+                    }
+
+
+                    Bind_Table(list2, "state_insp");
+                    if (Excel == "1") {
+
+                        window.location.href = data.FileName + ".xlsx";
+
+                    }
+                }
+                else {
+                    Error_Alert(data.Message);
+                }
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    }
+
+    
+    
+
+
+
+
+
+</script>

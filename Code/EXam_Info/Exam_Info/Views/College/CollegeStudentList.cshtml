@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Exam_Info.Models.Student_Model>
+@{
+    ViewBag.Title = "CollegeStudentList";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+}
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>College Student List</h2>
+    </div>
+
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+@if (Model != null)
+{
+    <div class="table-responsive pt-3  ">
+        <center>
+            <table class="AppFormTable " style="background-color: #e7fafe;">
+                <tr>
+                    <th>
+                        Sr. No
+                    </th>
+                    <th>
+                        Index No
+                    </th>
+                    <th>
+                        Seat No
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Mother Name
+                    </th>
+                    <th>
+                        Stream
+                    </th>
+
+                </tr>
+                @{int i = 1;}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span>@i</span>
+                            @{i++;}
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Index_No)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Seat_No)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Mother_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Stream)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </center>
+    </div>
+}

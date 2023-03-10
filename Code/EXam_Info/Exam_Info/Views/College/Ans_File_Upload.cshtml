@@ -1,0 +1,370 @@
+﻿@model Exam_Info.Models.FileUploadModel
+@{
+    ViewBag.Title = "Ans_File_Upload";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<h2 style="text-align:center">Ans File Upload</h2>
+<br />
+
+<form id="ansfile">
+    <div class="container">
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <label for="College Name">Teacher Name</label><span style="color:red">*</span>
+                    @Html.TextBoxFor(model => model.Teacher_Name, new { @class = "form-control", @placeholder = "Teacher Name", @name = "Teacher Name", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.Teacher_Name, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-4">
+                    <label for="College Addres">Teacher Mobile Number</label><span style="color:Red">*</span>
+                    @Html.TextBoxFor(model => model.Mobile_No, new { @class = "form-control", @placeholder = "Teacher Mobile Number", @name = "Teacher Mobile Number", maxLength = 10, @required = "required" })
+                    @Html.ValidationMessageFor(model => model.Mobile_No, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+
+            <div class="col-sm-4">
+
+                <label for="Coordinator Name">Teacher Email ID</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Email_Id, new { @class = "form-control", @placeholder = "Teacher Email ID", @name = "Teacher Email ID", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Email_Id, "", new { @class = "text-danger" })
+
+            </div>
+
+
+
+            <div class="col-sm-4">
+                <label for="Coordinator Mobile">Total Students</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Total_Students, new { @class = "form-control", @placeholder = "Total Students", @name = "Total Students", maxLength = 3, @required = "required" })
+                @Html.ValidationMessageFor(model => model.Total_Students, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="Coordinator Email">Total Present Student</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Total_Present_Student, new { @class = "form-control", @placeholder = "Total Present Student", @name = "Total Present Student", maxLength = 3 })
+                @Html.ValidationMessageFor(model => model.Total_Present_Student, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-4">
+                <label for="Coordinator Eduction">Total Absent Student</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Total_Absent_Student, new { @class = "form-control", @placeholder = "Total Absent Student", @name = "Total Absent Student", maxLength = 3 })
+                @Html.ValidationMessageFor(model => model.Total_Absent_Student, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="Password">Total Text Ans File</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Text_Ans_File, new { @class = "form-control", @placeholder = "Total Text Ans File", @name = "Text Ans File ", maxLength = 3 })
+                @Html.ValidationMessageFor(model => model.Text_Ans_File, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <div align="center" class="row">
+            <div class="col-md-5">
+                <span style="color:red"><h5>Please Select Folder Containing All Answer Files...</h5></span>
+                <input type="file" webkitdirectory directory multiple id="uploadedfiles" name="uploadedfiles" />
+            </div>
+            <div class="col-sm-4">
+                <input type="button" value="Submit" class="btn btn-primary" id="btnsubmit" />
+            </div>
+
+        </div><br />
+        <div align="center" id="checkdiv" @*style="display:none"*@>
+            <input type="button" value="Check & Verify" class="btn btn-success" id="btncheck" />
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="showstatus" class="AppFormTable " style="background-color: #e7fafe;"></table>
+            </div>
+
+        </div>
+        <br />
+        <br />
+        <div class="col-sm-offset-5 col-sm-5">
+            <input type="button" class="btn btn-success" value="Final Submit" style="display:none" id="submitpart" onclick="checkReason()" />
+        </div>
+        <div style="width:300px">
+            <div id="progressbar" style="position: relative; display: none">
+                <span style="position: absolute; left: 35%; top: 20%" id="progressBar-label">
+                    Uploading...
+                </span>
+            </div>
+        </div>
+        <div>
+            @{
+                @Html.Partial("ProgressView")
+            }
+        </div>
+        <div>
+            <label id="outof"></label>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        $("#btnsubmit").click(function () {
+            call();
+        });
+        const sleep = (milliseconds) => {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
+        //$("#btn_submit").click(function () {
+        //    CollegeInfo();
+        //});
+
+        $("#btncheck").click(function () {
+            BindVerifyTable();
+        });
+
+
+       
+
+        async function call() {
+            var files = $("#uploadedfiles").get(0).files;
+            var uploadedcnt = 0;
+            for (var i = 0; i < files.length; i++) {
+                sendFile(i);
+                uploadedcnt++;
+                var status = document.getElementById("outof");
+                status.innerHTML = uploadedcnt + "/" + files.length + " files uploaded";
+                //await sleep(300000); //5 min
+                await sleep(1000); //1 sec
+            }
+            $('#checkdiv').show();
+        }
+        function sendFile(nthfile) {
+            var files = $("#uploadedfiles").get(0).files;
+            var fileData = new FormData();
+            fileData.append("uploadfiles", files[nthfile]);
+            $.ajax({
+                type: "POST",
+                url: "/College/UploadFile",
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                data: fileData,
+                success: function (Data) {
+                    if (Data.Result) {
+                        Success_Alert(Data.Response);
+                    }
+                    else {
+                        Error_Alert(Data.Response);
+                    }
+
+                },
+                error: function (error) {
+                    alert(error.statusText);
+                }
+            });
+        }
+
+    });
+    function callnew(jthfile) {
+        var files = $(`#file` + jthfile + ``).get(0).files;
+        //var uploadedcnt = 0;
+        for (var i = 0; i < files.length; i++) {
+            sendNewFile(i);
+        }
+        //return true;
+    }
+    function sendNewFile(nthfile) {
+        var files = $(`#file` + (++nthfile) + ``).get(0).files;
+        var fileData = new FormData();
+        fileData.append("uploadfiles", files[0]);
+        $.ajax({
+            type: "POST",
+            url: "/College/UploadNewFile",
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (Data) {
+                if (Data.Result) {
+                    BindVerifyTable();
+                }
+            },
+            error: function (error) {
+                alert(error.statusText);
+            }
+        });
+    }
+
+    function BindVerifyTable() {
+        $.ajax({
+            type: "GET",
+            url: "/College/CheckAndVerify",
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            success: function (Data) {
+                if (Data.Result) {
+                    debugger
+                    $('#lbl_Wait').hide();
+                    $("#showstatus").empty();
+                    if (Data.Result) {
+                        var rows;
+                        var j = 0;
+                        rows += ` <thead><tr><td>Sr.No</td><td>Index No</td><td>Seat No</td><td>File Status</td><td>Reason</td><td>Reupload</td></tr>  </thead><tbody`;
+                        $.each(Data.Data, function (i, item) {
+
+                            if (item.File_Status == 'Not_Detected') {
+                                rows +=
+                                    "<tr>"
+
+                                    + "<td>" + (i + 1) + "</td>"
+                                    + "<td>" + item.Index_No + "</td>"
+                                    + "<td>" + item.Seat_No + "</td>"
+                                    + "<td>" + item.File_Status + "</td>"
+                                    + "<td>" + `<select name="ddlgrade1" id="ddlgrade1"  >
+                                                    <option value="0" >--Select Reason--</option>
+                                                    <option value="File Corrupted">File Corrupted</option>
+                                                    <option value="Absent">Absent</option>
+                                                    <option value="Not Found">Not Found</option></select>`
+                                    + "</td>"
+                                    + "<td>" + `<input type ="file" name = "file` + (++j) + `" id = "file` + j + `"/>` + `<input type = "button" value = "Upload" id="btnreupload` + j + `" onclick = "callnew(` + j + `)"/>` + "</td>"
+                                    + "</tr>";
+                                $("#check").show();
+
+                            }
+                            else {
+                                rows +=
+                                    "<tr>"
+                                    + "<td>" + (i + 1) + "</td>"
+                                    + "<td>" + item.Index_No + "</td>"
+                                    + "<td>" + item.Seat_No + "</td>"
+                                    + "<td>" + item.File_Status + "</td>"
+                                    + "<td>"
+                                    + "</td>"
+                                    + "<td></td>"
+                                    + "</tr>";
+                            }
+
+                        });
+                        rows += `</tbody>`
+                        $('#showstatus').append(rows);
+                        var status = document.getElementById("outof");
+                        status.innerHTML = "";
+                        $('#submitpart').show();
+                        $("#check").show();
+                    }
+                }
+                else {
+                    Error_Alert(Data.Response);
+                }
+            },
+            error: function (error) {
+                alert(error.statusText);
+            }
+        });
+    }
+
+    //function CollegeInfo() {
+
+    //}
+
+    function checkReason() {
+        //var flag = "0";
+        //$('#showstatus tbody tr').each(function () {
+        //    debugger;
+        //    var row = $(this);
+        //    var td = [];
+        //    td.Seat_No = row.find("td").eq(2).html();
+        //    td.Reason = row.find("td:eq(4) #ddlgrade1 :selected").val();
+
+        //    if (td.Reason == "0") {
+        //        Error_Alert("Give Reason for not uploded file : " + td.Seat_No);
+        //        flag = "1";
+        //        //break;
+        //        return false;
+        //    }
+
+        /*});*/
+        var formData = new FormData($(ansfile)[0])
+        var model = {};
+        var Attendances = new Array();
+
+        $("#showstatus tbody tr").each(function () {
+            debugger
+            var row = $(this);
+            var fileStatuses = {};
+            fileStatuses.Index_No = row.find("td").eq(1).html();
+            fileStatuses.Seat_No = row.find("td").eq(2).html();
+            fileStatuses.File_Status = row.find("td").eq(3).html();
+            fileStatuses.Reason = row.find("td:eq(4) #ddlgrade1 :selected").val();
+            Attendances.push(fileStatuses);
+
+            
+        });
+        model.Seat_No = Attendances.map(current => { return { Seat_No: current.Seat_No } });
+        model.File_Status = Attendances.map(current => { return { File_Status: current.File_Status } });
+        model.Reason = Attendances.map(current => { return { Seat_No: current.Reason } });
+
+
+
+        model.fileStatuses = Attendances;
+        model.Teacher_Name = $("#Teacher_Name").val();
+        model.Mobile_No = $("#Mobile_No").val();
+        model.Email_Id = $("#Email_Id").val();
+        model.Total_Students = $("#Total_Students").val();
+        model.Total_Present_Student = $("#Total_Present_Student").val();
+        model.Total_Absent_Student = $("#Total_Absent_Student").val();
+        model.Text_Ans_File = $("#Text_Ans_File").val();
+
+        $.ajax({
+            type: 'POST',
+            url: '../College/Final_Upload',
+            data: JSON.stringify(model),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            beforeSend: function () {
+                $("#batch_form :input").prop("disabled", true);
+                Showloader();
+            },
+            complete: function () {
+                $("#batch_form :input").prop("disabled", false);
+                Hideloader();
+            },
+            success: function (Data) {
+                console.log(Data)
+                if (Data.Result) {
+                    Success_Alert("Uploaded Successfully");
+                    window.open(Data.Response, '_blank');
+                    window.location.replace("../College/College_Dashboard");
+                }
+                else {
+                    Error_Alert(Data.Response);
+                }
+            },
+            error: function (e1, e2, e3) {
+                alert(e1);
+            }
+        });
+
+
+        //Success_Alert("Done");
+
+    }
+</script>
+

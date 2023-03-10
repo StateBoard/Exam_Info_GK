@@ -1,0 +1,338 @@
+﻿@model Exam_Info.Models.Tbl_Attendance_Web
+@{
+    ViewBag.Title = "Attendance_Page";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+
+    //List<SelectListItem> Batch = new List<SelectListItem>();
+    //Batch.Add(new SelectListItem { Text = "B1", Value = "B1" });
+    //Batch.Add(new SelectListItem { Text = "B2", Value = "B2", });
+    //Batch.Add(new SelectListItem { Text = "B3", Value = "B3" });
+    //Batch.Add(new SelectListItem { Text = "B4", Value = "B4" });
+    //Batch.Add(new SelectListItem { Text = "B5", Value = "B5" });
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+        table td, table th {
+           
+            vertical-align: top;
+            text-align: left;
+            font-size: larger;
+            /* font-size: small;*/
+            padding: 5px !important;
+            font-weight: 800;
+        }
+
+        table tr:first-child th {
+            border-top: 0;
+        }
+
+        table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        table tr td:first-child,
+        {
+            border-left-style: none;
+            border-left-color: inherit;
+            border-left-width: 0;
+            font-size: small;
+            font-weight: 700;
+        }
+
+        table tr td:last-child,
+        table tr th:last-child {
+            border-right: 0;
+        }
+    .borderTable {
+        /*border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;*/
+        border:1px solid;
+        empty-cells: show;
+        margin-bottom: 10px;
+        background: white;
+        font-family: 'Ruda', sans-serif;
+        padding: 0px !important;
+        margin: 0px !important;
+        font-size: 16px;
+        width: 740px;
+    }
+
+        .borderTable tr {
+            /*height:100px;*/
+        }
+
+        .borderTable td {
+            border-bottom: 3px solid Black;
+            border-right: 1px solid black;
+            empty-cells: show;
+            vertical-align: middle;
+            font-size: 16px;
+            color: Black;
+            font-weight: bold;
+        }
+
+        .borderTable th {
+            border-bottom: 3px solid Black;
+            border-right: 1px solid Black;
+            empty-cells: show;
+            /*background-color:#eeeeee;*/
+            color: Black;
+            text-align: center;
+            font-size: 16px;
+        }
+</style>
+<h2 style="text-align:center">Attendance Page</h2>
+
+
+<form id="batch_form">
+    <div class="table-responsive pt-3  ">
+        <div class="row">
+
+
+            <div class="col-sm-2" style=" margin-left:800px; margin-top:30px;">
+                <label for="Batch">Select Batch</label><span style="color:Red">*</span>
+
+                @*@Html.DropDownListFor(model => model.Batch, Batch, "--Select Stream--", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Batch, "", new { @class = "text-danger" })*@
+
+                @Html.DropDownListFor(model => model.Batch, ViewBag.BatchList as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Batch, "", new { @class = "text-danger" })
+
+
+            </div>
+
+
+
+            @*<div class="col-sm-2" style="margin-top: 20px;">
+                <h5></h5><br />
+                <input type="button" class="btn btn-success" id="btn_submit" value="Submit"><br />
+            </div>*@
+        </div>
+        <div style="margin-top:50px;"></div>
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            <div class="table-responsive pt-3  ">
+                <center>
+                    <table id="student" class="borderTable table-striped  table-condensed">
+
+                        <thead>
+                            <tr>
+                                <th>
+                                    Sr.No
+                                </th>
+
+                                <th>
+                                    Seat_No
+                                </th>
+                                <th>
+                                    Batch
+                                </th>
+                               
+                                <th>
+                                    Exam_Login_Status
+                                </th>
+                                <th>
+                                    Paper_ID
+                                </th>
+                                <th>
+                                    Attendance_Status
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+
+                    </table>
+                </center>
+
+            </div>
+
+            <div class="m-3">
+                <center>
+                    <span class="icon-input-btn">
+                        <input type="button" class="btn btn-secondary btn-lg" id="btnSave" value="Submit" style="background-color: #3eadcf;font-weight:bold; color:white; border:1px solid blue">
+                        @*<input type="submit" class="btn btn-secondary btn-lg"id="Print" value="Print"  style="background-color: #3eadcf;font-weight:bold; color:white; border:1px solid blue">*@
+
+                    </span>
+
+                </center>
+            </div>
+
+        }
+    </div>
+    @*<button type="button" class="btn btn-primary " id="btn_final_submit" value="Submit" onclick="return confirm('Do you want to save ?')" />Verify & Submit*@
+</form>
+
+<script>
+$(document).ready(function () {
+        $(function () {
+            $("#Batch").change(function () {
+                $("#table").empty();
+                var selectedValue = $(this).val();
+                debugger
+                $.ajax({
+                    type: 'POST',
+                    url: '../College/Attendance_Page',
+                    dataType: 'json',
+                    data: {
+                        Batch: $("#Batch").val(),
+                    },
+
+                    success: function (Data) {
+                        var index = 1;
+                        console.log(Data);
+                        $("#student tbody tr").remove();
+
+                        $.each(Data.Response, function (i, data) {
+                            {
+
+                                var rows = "<tr>" +
+                                    "<td >" + (i + 1) + "</td>" +
+                                    "<td >" + data.Seat_No + "</td>" +
+                                    "<td >" + data.Batch + "</td>" +
+                                    "<td >" + data.Attendance + "</td>" +
+                                    "<td >" + data.Paper_ID + "</td>" +
+
+                                    "<td >" + `<input type="checkbox" id="AttendanceModel[` + i + `].Attendance" name ="AttendanceModel[` + i + `].Attendance" value = "checked" ` + (data.Attendance == "Present" ? "checked" : "") + `>` + `<label> Present</label>`
+                                    + "</td>" +
+
+                                    +"</tr>";
+                                $('#student tbody').append(rows);
+
+                                //if (data.Attendance == "Absent") {
+                                //    $('input[name=studatten]').attr('checked', true);
+                                //}
+                                //else {
+                                //    $('input[name=studatten]').attr('checked', false);
+                                //}
+                                //$('input[type=checkbox]').click(function () {
+                                //    $(this).closest('tr')
+                                //        .find('input[type=checkbox]').not(this)
+                                //        .prop('disabled', this.checked);
+                                //});
+
+                            }
+
+                        });
+
+
+                    },
+                    error: function (ex) {
+                        alert('Failed.' + ex);
+                    }
+                })
+
+                return false;
+
+
+            });
+        });
+    })
+
+
+
+    $("body").on("click", "#btnSave", function () {
+                debugger
+                //Loop through the Table rows and build a JSON array.
+                var Attendances = new Array();
+
+        $("#student tbody tr").each(function () {
+                    var row = $(this);
+                    var Attendanc = {};
+            Attendanc.Roll_No = row.find("td").eq(1).html();
+            Attendanc.Batch = row.find("td").eq(2).html();
+            Attendanc.Exam_Login_Status = row.find("td").eq(3).html();
+            Attendanc.Paper_Id = row.find("td").eq(4).html();
+            Attendanc.Attendance_Status = row.find("td:eq(5) input[type='checkbox']:checked").val();
+            Attendances.push(Attendanc);
+                });
+
+                //Send the JSON array to Controller using AJAX.
+                $.ajax({
+                    type: "POST",
+                    url: "/College/AttendanceStud",
+                    data: JSON.stringify(Attendances),
+                    contentType: "application/json;",
+                    dataType: "json",
+                    success: function (r) {
+                        if (r.Result) {
+
+                            if (r != 0) {
+                                alert("Record ,  " + r.Message)
+                                window.location.replace("../College/Print?Batch=" + $("#Batch").val() + "");
+
+                            }
+                        }
+                        else {
+                            alert(r.Message);
+                        }
+
+                    },
+                    error: function (ex) {
+                        alert('Failed.' + ex);
+                    }
+
+                });
+            });
+
+
+
+
+
+            //$("#btn_submit").click(function (e) {
+            //    e.preventDefault();
+
+
+
+            //    $.ajax({
+            //        type: 'POST',
+            //        url: '../College/Attendance_Page',
+            //        dataType: 'json',
+            //        data: {
+            //            batch: $("#Batch").val()
+            //        },
+            //        beforeSend: function () {
+            //            Showloader();
+            //        },
+            //        complete: function () {
+            //            Hideloader();
+            //        },
+            //        success: function (data) {
+            //            debugger
+            //            var temp = "";
+            //            temp += `<thead><tr>  <td><b>Sr.No.</b></td><td><b>Roll No</b></td><td><b>Batch</b></td><td><b>Name</b></td><td><b>Paper_ID</b></td><td><b>Exam_Login_Status</b></td><td><b>Present/Absent</b></td> </tr></thead><tbody`;
+            //            if (data.Result) {
+            //                $("#tbl_batch").empty();
+            //                $.each(data.Response, function (i, data) {
+            //                    temp += `<tr><td>` + (i + 1) + `<input type="hidden" id="AttendanceModel[` + i + `].ID" name="AttendanceModel[` + i + `].ID" value="` + data.id + `">
+            //             <input type="hidden" id="AttendanceModel[`+ i + `].Seat_No" name="AttendanceModel[` + i + `].Seat_No" value="` + data.Seat_No + `">
+            //             <input type="hidden" id="AttendanceModel[`+ i + `].Batch" name="AttendanceModel[` + i + `].Batch" value="` + data.Batch + `">
+            //             <input type="hidden" id="AttendanceModel[`+ i + `].Name" name="AttendanceModel[` + i + `].Name" value="` + data.Name + `">
+            //             <input type="hidden" id="AttendanceModel[`+ i + `].Paper_Id" name="AttendanceModel[` + i + `].Paper_Id" value="` + data.Paper_Id + `">
+            //             <input type="hidden" id="AttendanceModel[`+ i + `].Attendance" name="AttendanceModel[` + i + `].Attendance" value="` + data.Attendance + `">
+            //             </td><td>` + data.Seat_No + `</td><td>` + data.Batch + `</td><td>` + data.Name + `</td><td>` + data.Paper_Id + `</td><td>` + data.Attendance + `</td><td><input type = "checkbox" name="check1" /> </tr>`;
+            //                    if (data.Attendance == "Present") {
+            //                        $('input[name=check1]').attr('checked', true);
+            //                    }
+            //                    else {
+            //                        $('input[name=check1]').attr('checked', false);
+            //                    }
+            //                });
+            //                temp += `</tbody>`;
+            //                $("#tbl_batch").append(temp);
+            //            }
+            //        },
+            //        error: function (ex) {
+            //            alert('Failed.' + ex);
+            //        }
+            //    });
+            //});
+
+
+           
+
+</script>

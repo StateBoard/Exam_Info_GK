@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        ..:: Maharashtra State Board of Secondary and Higher Secondary Education Pune - 411004::..
+    </title>
+    <link href="~/Design/CSS/bootstrap.css" rel="stylesheet" />
+    <script src="~/Design/JS/bootstrap.js"></script>
+    <link href="~/Design/CSS/Project.css" rel="stylesheet" />
+    <link href="~/Design/CSS/grid.css" rel="stylesheet" />
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="~/Design/JS/jquery.validate.min.js"></script>
+    <script src="~/Design/JS/jquery.validate.unobtrusive.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="~/Design/project.js"></script>
+    <link href="~/Design/Sweetalert/sweetalert2.css" rel="stylesheet" />
+    <script src="~/Design/Sweetalert/sweetalert2.js"></script>
+
+
+</head>
+<body style="background:#06213F">
+
+    <div style="background-color:white;margin:10px;height:100%;">
+        <div class="container-fluid p-10  text-white text-center" style="background-color:white;">
+            <div class="row">
+                <div class="col-sm-12" align="center">
+                    <div class="row w-100 mx-auto">
+                        <div class=" col-10 px-md-0 text-center heading-name">
+
+                            <img alt="Logo" src="~/Design/Images/MSBSHSE-LOGO.png" class="logo-img img-fluid" style="float: left" height="50px" align="left">
+                            <h2 class="text-dark ">Maharashtra State Board of Secondary and Higher Secondary Education Pune - 411005</h2>
+                            <h2 class="text-dark">Official Website for online GK Exam 2022</h2>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../Division/Division_DashBoard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../Division/Division_Edit_Profile">Edit Profile</a>
+
+                        </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Report
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="../Division/Division_Inspection">Inspection </a></li>
+                                <li><a class="dropdown-item" href="../Division/Division_Data_Test1">DTT1</a></li>
+                                <li><a class="dropdown-item" href="../Division/Division_Data_Test2">DTT2</a></li>
+                                <li><a class="dropdown-item" href="../Division/Division_Data_Test3">DTT3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Student List
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" aria-current="page" href="../Division/Divi_Stud_Login">Student</a></li>
+                                <li><a class="dropdown-item" aria-current="page" href="../Division/Division_Batch_List">Batch</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../Division/Division_College_List">College</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../Division/Division_Reschedule">Reschedule</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../Division/Check_Mark_Status">Check_Mark_Status</a>
+
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item" style="text-align:right">
+                            <a class="nav-link" href="../Login/LogOut">Logout</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+        </nav>
+        <div style="margin:20px">
+            @RenderBody()
+        </div>
+        <footer class="py-2 bottombg mt-auto text-center ">
+            <div class="container-fluid bottom-link">
+                <div class=" align-items-center">
+                    <font size="2">©Maharashtra State Board Pune. All Rights Reserved. </font>
+
+                    <br>
+                    <font size="1">Bhamburda, Shivajinagar, Agarkar marg, Shivajinagar Pune 411005(M.S.)</font>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="loadertap1"></div>
+    <div class="loadertap2"><img src="~/Design/images/loader.gif" height="300px" width="300px"></div>
+</body>
+</html>

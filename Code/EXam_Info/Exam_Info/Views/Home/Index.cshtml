@@ -1,0 +1,216 @@
+﻿@model Exam_Info.Models.Model2
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<form>
+    <div class="row">
+        <div class="col-md-4">
+            <input type="file" webkitdirectory directory multiple id="uploadedfiles" name="uploadedfiles" />
+        </div>
+        <div class="col-sm-4">
+            <input type="button" value="Submit" class="btn btn-primary" id="btnsubmit" />
+        </div>
+        <div class="col-sm-4" id="checkdiv" @*style="display:none"*@>
+            <input type="button" value="Check & Verify" class="btn btn-success" id="btncheck" />
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="showstatus" class="borderTable"></table>
+        </div>
+        <br />
+        <br />
+        <div class="col-sm-offset-5 col-sm-5" style="display:none" id="submitpart">
+            <input type="button" class="btn btn-success" value="Submit" id="btnfinalsubmit" onclick="checkReason()" />
+        </div>
+    </div>
+    <div style="width:300px">
+        <div id="progressbar" style="position: relative; display: none">
+            <span style="position: absolute; left: 35%; top: 20%" id="progressBar-label">
+                Uploading...
+            </span>
+        </div>
+    </div>
+    <div>
+        @{
+            @Html.Partial("ProgressView")
+        }
+    </div>
+    <div>
+        <label id="outof"></label>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        $("#btnsubmit").click(function () {
+            call();
+        });
+        const sleep = (milliseconds) => {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
+
+
+        $("#btncheck").click(function () {
+            BindVerifyTable();
+        });
+
+
+
+        async function call() {
+            var files = $("#uploadedfiles").get(0).files;
+            var uploadedcnt = 0;
+            for (var i = 0; i < files.length; i++) {
+                sendFile(i);
+                uploadedcnt++;
+                var status = document.getElementById("outof");
+                status.innerHTML = uploadedcnt + "/" + files.length + " files uploaded";
+                //await sleep(300000); //5 min
+                await sleep(1000); //1 sec
+            }
+            $('#checkdiv').show();
+        }
+        function sendFile(nthfile) {
+            var files = $("#uploadedfiles").get(0).files;
+            var fileData = new FormData();
+            fileData.append("uploadfiles", files[nthfile]);
+            $.ajax({
+                type: "POST",
+                url: "/Home/UploadFile",
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                data: fileData,
+                success: function (Data) {
+
+                },
+                error: function (error) {
+                    alert(error.statusText);
+                }
+            });
+        }
+
+    });
+    function callnew(jthfile) {
+        var files = $(`#file` + jthfile + ``).get(0).files;
+        //var uploadedcnt = 0;
+        for (var i = 0; i < files.length; i++) {
+            sendNewFile(i);
+        }
+        //return true;
+    }
+    function sendNewFile(nthfile) {
+        var files = $(`#file` + (++nthfile) + ``).get(0).files;
+        var fileData = new FormData();
+        fileData.append("uploadfiles", files[0]);
+        $.ajax({
+            type: "POST",
+            url: "/Home/UploadNewFile",
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (Data) {
+                if (Data.Result) {
+                    BindVerifyTable();
+                }
+            },
+            error: function (error) {
+                alert(error.statusText);
+            }
+        });
+    }
+
+    function BindVerifyTable() {
+        $.ajax({
+            type: "GET",
+            url: "/Home/CheckAndVerify",
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            success: function (Data) {
+                if (Data.Result) {
+                    $('#lbl_Wait').hide();
+                    $("#showstatus").empty();
+                    if (Data.Result) {
+                        var rows;
+                        var j = 0;
+                        rows += ` <thead><tr><td>Sr.No</td><td>Index No</td><td>Seat No</td><td>File Status</td><td>Reason</td><td>Reupload</td></tr>  </thead><tbody`;
+                        $.each(Data.Data, function (i, item) {
+
+                            if (item.File_Status == 'Not_Detected') {
+                                rows +=
+                                    "<tr>"
+
+                                    + "<td>" + (i + 1) + "</td>"
+                                    + "<td>" + item.Index_No + "</td>"
+                                    + "<td>" + item.Seat_No + "</td>"
+                                    + "<td>" + item.File_Status + "</td>"
+                                    + "<td>" + `<select name="ddlgrade1" id="ddlgrade1"  >
+                                                    <option value="0" >--Select Reason--</option>
+                                                    <option value="File Corrupted">File Corrupted</option>
+                                                    <option value="Absent">Absent</option>
+                                                    <option value="Not Found">Not Found</option></select>`
+                                    + "</td>"
+                                    + "<td>" + `<input type ="file" name = "file` + (++j) + `" id = "file` + j + `"/>` + `<input type = "button" value = "Upload" id="btnreupload` + j + `" onclick = "callnew(` + j + `)"/>` + "</td>"
+                                    + "</tr>";
+                                $("#check").show();
+
+                            }
+                            else {
+                                rows +=
+                                    "<tr>"
+                                    + "<td>" + (i + 1) + "</td>"
+                                    + "<td>" + item.Index_No + "</td>"
+                                    + "<td>" + item.Seat_No + "</td>"
+                                    + "<td>" + item.File_Status + "</td>"
+                                    + "<td>"
+                                    + "</td>"
+                                    + "<td></td>"
+                                    + "</tr>";
+                            }
+
+                        });
+                        rows += `</tbody>`
+                        $('#showstatus').append(rows);
+                        var status = document.getElementById("outof");
+                        status.innerHTML = "";
+                        $('#submitpart').show();
+                        $("#check").show();
+                    }
+                }
+                else {
+                    Error_Alert(Data.Response);
+                }
+            },
+            error: function (error) {
+                alert(error.statusText);
+            }
+        });
+    }
+
+    function checkReason() {
+        var flag = "0";
+        $('#showstatus tbody tr').each(function () {
+            debugger;
+            var row = $(this);
+            var td = [];
+            td.Seat_No = row.find("td").eq(2).html();
+            td.Reason = row.find("td:eq(4) #ddlgrade1 :selected").val();
+
+            if (td.Reason == "0") {
+                Error_Alert("Give Reason for not uploded file : " + td.Seat_No);
+                flag = "1";
+                //break;
+                return false;
+            }
+
+        });
+        if (flag == "0") {
+            Success_Alert("Done");
+        }
+    }
+</script>

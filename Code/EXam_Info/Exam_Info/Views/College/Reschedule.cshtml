@@ -1,0 +1,260 @@
+﻿@model Exam_Info.Models.Tbl_Reschedule_Student
+@{
+    ViewBag.Title = "Reschedule";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+}
+
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<h2>Reschedule</h2>
+<br />
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<form id="batch_form">
+    <div class="row">
+
+        <div class="col-sm-2">
+            <h5>Select Batch :</h5>
+            @Html.DropDownListFor(m => m.Initial_Batch, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Batch",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="B1", Value="B1"},
+            new SelectListItem{Text="B2", Value="B2"},
+            new SelectListItem{Text="B3", Value="B3"},
+            new SelectListItem{Text="B4", Value="B4"},
+            new SelectListItem{Text="B5", Value="B5"},
+            new SelectListItem{Text="B6", Value="B6"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+        <div class="col-sm-2">
+            <h5></h5><br />
+            <input type="button" class="btn btn-success" id="btn_submit" value="Submit"><br />
+        </div>
+
+
+
+        @*<div class="col-md-3">
+               <h5></h5><br />
+               <input type="submit" class="btn btn-success" id="btn_upload" value="Upload"><br />
+            </div>*@
+
+
+    </div>
+
+
+    <br />
+    <br />
+    <center>
+        <table class="AppFormTable" id="tbl_batch" style="background-color: #e7fafe;"></table>
+    </center>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-3">
+            <h5>Upload File :</h5>
+            <span class="required" style="color:red;font-weight:bold">Please Upload Image in JPG, JPEG, PNG Format</span>
+            <input type="file" id="File" name="File">
+        </div>
+        <div id="firstredrpdwn" class="col-sm-2" style="display:none">
+            <h5>Select Reschedule Batch :</h5>
+            @Html.DropDownListFor(m => m.Reschedule_Batch, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Batch",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="B3", Value="B3"},
+            new SelectListItem{Text="B4", Value="B4"},
+            new SelectListItem{Text="B5", Value="B5"},
+            new SelectListItem{Text="B6", Value="B6"},
+            new SelectListItem{Text="B7", Value="B7"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+
+        <div id="secredrpdwn" class="col-sm-2" style="display:none">
+            <h5>Select Reschedule Batch :</h5>
+            @Html.DropDownListFor(m => m.Reschedule_Batch, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Batch",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="B4", Value="B4"},
+            new SelectListItem{Text="B5", Value="B5"},
+            new SelectListItem{Text="B6", Value="B6"},
+            new SelectListItem{Text="B7", Value="B7"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+
+        <div id="thirdredrpdwn" class="col-sm-2" style="display:none">
+            <h5>Select Reschedule Batch :</h5>
+            @Html.DropDownListFor(m => m.Reschedule_Batch, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Batch",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="B5", Value="B5"},
+            new SelectListItem{Text="B6", Value="B6"},
+            new SelectListItem{Text="B7", Value="B7"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+
+        <div id="fourthredrpdwn" class="col-sm-2" style="display:none">
+            <h5>Select Reschedule Batch :</h5>
+            @Html.DropDownListFor(m => m.Reschedule_Batch, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Batch",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="B6", Value="B6"},
+            new SelectListItem{Text="B7", Value="B7"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+
+        <div id="fifthredrpdwn" class="col-sm-2" style="display:none">
+            <h5>Select Reschedule Batch :</h5>
+            @Html.DropDownListFor(m => m.Reschedule_Batch, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Batch",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="B7", Value="B7"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+
+        <div class="col-md-5">
+            <h5></h5><br />
+            <input type="button" class="btn btn-success" id="btn_batch_submit" value="Submit Batch" disabled><br />
+        </div>
+    </div>
+</form>
+
+
+<script>
+
+    $("#btn_submit").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '../College/Reschedule',
+            dataType: 'json',
+            data: {
+                batch: $("#Initial_Batch").val()
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (data) {
+
+                var temp = "";
+                temp += `<thead><tr><td>Sr.No.</td><td>Seat No</td><td>Name</td><td>Batch</td><td></td></tr></thead><tbody`;
+                if (data.Result) {
+                    $("#tbl_batch").empty();
+                    $.each(data.Response, function (i, data) {
+                        temp += `<tr><td>` + (i + 1) + `<input type="hidden" id="Mark_Model[` + i + `].ID" name="Mark_Model[` + i + `].ID" value="` + data.id + `">
+                         <input type="hidden" id="Mark_Model[`+ i + `].Seat_No" name="Mark_Model[` + i + `].Seat_No" value="` + data.Seat_No + `">
+                         <input type="hidden" id="Mark_Model[`+ i + `].Name" name="Mark_Model[` + i + `].Name" value="` + data.Name + `">
+                         <input type="hidden" id="Mark_Model[`+ i + `].Batch" name="Mark_Model[` + i + `].Batch" value="` + data.Batch + `">
+                         </td><td>` + data.Seat_No + `</td><td>` + data.Name + `</td><td>` + data.Batch + `</td><td>` + `<input type = "checkbox" value = "checked" id="Mark_Model[` + i + `].Status" name ="Mark_Model[` + i + `].Status"  class="chk"/></td></tr>`;
+                    });
+                    temp += `</tbody>`;
+                    $("#tbl_batch").append(temp);
+                }
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    });
+
+    $(document).ready(function () {
+
+
+        $("#btn_batch_submit").click(function () {
+
+            var formData = new FormData($(batch_form)[0])
+            console.log(formData);
+
+            $.ajax({
+                type: 'POST',
+                url: '../College/Reschedule_Student',
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    $("#batch_form :input").prop("disabled", true);
+                    Showloader();
+                },
+                complete: function () {
+                    $("#batch_form :input").prop("disabled", false);
+                    Hideloader();
+                },
+                success: function (Data) {
+
+                    if (Data.Result) {
+                        Success_Alert(Data.Message);
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    alert(e1);
+                }
+            });
+
+        });
+
+
+
+        $('#Initial_Batch').change(function () {
+
+            var batchVal = document.getElementById("Initial_Batch").value;
+
+            if (batchVal == "B2") {
+                $("#firstredrpdwn").show();
+                $("#secredrpdwn").hide();
+                $("#thirdredrpdwn").hide();
+                $("#fourthredrpdwn").hide();
+                $("#fifthredrpdwn").hide();
+            }
+
+            if (batchVal == "B3") {
+                $("#secredrpdwn").show();
+                $("#thirdredrpdwn").hide();
+                $("#fourthredrpdwn").hide();
+                $("#fifthredrpdwn").hide();
+                $("#firstredrpdwn").hide();
+            }
+            if (batchVal == "B4") {
+                $("#thirdredrpdwn").show();
+                $("#fourthredrpdwn").hide();
+                $("#fifthredrpdwn").hide();
+                $("#firstredrpdwn").hide();
+                $("#secredrpdwn").hide();
+            }
+            if (batchVal == "B5") {
+                $("#fourthredrpdwn").show();
+                $("#thirdredrpdwn").hide();
+                $("#fifthredrpdwn").hide();
+                $("#firstredrpdwn").hide();
+                $("#secredrpdwn").hide();
+            }
+            if (batchVal == "B6") {
+                $("#fifthredrpdwn").show();
+                $("#thirdredrpdwn").hide();
+                $("#fourthredrpdwn").hide();
+                $("#firstredrpdwn").hide();
+                $("#secredrpdwn").hide();
+            }
+        });
+
+        $('#btn_batch_submit').click(function () {
+            var fileVal = document.getElementById("File");
+            if (fileVal.value == '') {
+                alert("Please Upload the File!");
+                return false;
+            }
+        });
+    });
+
+    $('#tbl_batch').change(function () {
+        $('#btn_batch_submit').prop('disabled', true);
+        $('table [type="checkbox"]').each(function (i, chk) {
+            if (chk.checked) {
+                $('#btn_batch_submit').prop('disabled', false);
+            }
+        });
+    });
+</script>
+

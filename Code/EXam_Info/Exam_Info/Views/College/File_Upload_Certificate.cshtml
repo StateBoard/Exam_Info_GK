@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "File_Upload_Certificate";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+
+
+}
+
+<style>
+    label {
+        font-size: 18px !important;
+        font-weight: bold;
+        color: black;
+    }
+
+    input[type="text"] {
+        height: 20px;
+    }
+</style>
+
+<div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+        @*<div class="row flex-grow">*@
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <center>
+                        <div style="width: 80%;  height:40px; background: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);  font-size: large; color: black;  font-weight: bold; border:2px solid white;  border-radius:15px 25px;  ">
+                            <center><h2> File Upload and Certificate</h2></center>
+                        </div>
+                        <img src="~/Design/images/mstrg.gif" style="height:200px; width:200px;" />
+                        @*<img src="~/Design/images/certificate.jpg" style="height:200px; width:200px;" />*@
+                        <br />
+                        <br />
+                        <a id="hyr_link" href="" style="font-family:'Bell MT';font-size:30px;">Your Students Answer File Uploded Successfully.To see of certificate Click Here </a>
+
+                    </center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var ss ='@(ViewBag.Index_No)';
+        console.log(ss)
+        $("#hyr_link").attr("href", "../Certificate_PDF/" + ss  +".pdf");
+    });
+
+
+</script>
+

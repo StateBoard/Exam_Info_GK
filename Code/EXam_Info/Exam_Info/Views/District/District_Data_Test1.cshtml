@@ -1,0 +1,176 @@
+﻿@model Exam_Info.Models.Tbl_District_Co_Ordinator_Registration
+@{
+    ViewBag.Title = "District_Data_Test1";
+    Layout = "~/Views/Shared/District_LayoutPage.cshtml";
+}
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #District {
+        width: 526px;
+        padding: 5px;
+    }
+
+    #btn_Excel {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>District Data Test1</h2>
+    </div>
+    <div class="col-sm-6">
+        <input type="button" class="btn btn-success" id="btn_Excel" value="Download Excel"><br />
+    </div>
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<div class="table-responsive pt-3  ">
+    <div class="row">
+
+        <div class="col-sm-4">
+            <label for="Division_List">District</label><span style="color:Red">*</span><br />
+
+            @Html.TextBox("District", TempData["District_Name"])
+            @Html.ValidationMessageFor(model => model.District_Code, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-4">
+            <label for="Taluka_Code">Select Taluka</label><span style="color:Red">*</span>
+            @Html.DropDownListFor(model => model.Taluka_Code, new SelectList(string.Empty, "Value", "Text"), "--Select Taluka--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Taluka_Code, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-1">
+            <center>
+                <label></label><br />
+                <input type="submit" value="Submit" id="btn_sub" class="btn btn-success" />
+            </center>
+        </div>
+    </div>
+    <br />
+
+    <center>
+        <table class="AppFormTable " id="state_insp" style="background-color: #e7fafe;">
+        </table>
+    </center>
+</div>
+<br />
+
+<script>
+
+    $(document).ready(function () {
+        $("#Taluka_Code").empty();
+        $.ajax({
+            type: 'POST',
+            url: '../District/Load_District',
+            dataType: 'json',
+            data: {
+                distCode: $("#District").val()
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#Taluka_Code").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+
+
+        $("#btn_sub").click(function () {
+
+            Get_Inspection_Record("0");
+
+        });
+        $("#btn_Excel").click(function () {
+
+            Get_Inspection_Record("1");
+
+        });
+
+
+        //var list2 = JSON.parse(JSON.stringify(data.Response));
+        //for (i in list2) {
+        //    var daate = list2[i].Datetime;
+        //    function jsondate_to_normaldate(daate) {
+        //        var dateString = daate.substr(6);
+        //        var currentTime = new Date(parseInt(dateString));
+        //        var month = currentTime.getMonth() + 1;
+        //        var day = currentTime.getDate();
+        //        var year = currentTime.getFullYear();
+
+        //        var hour = currentTime.getHours();
+        //        var min = currentTime.getMinutes();
+
+        //        var date = day + "-" + month + "-" + year + " " + hour + ":" + min + " ";
+        //        return date;
+        //    }
+        //}
+
+        function Get_Inspection_Record(Excel) {
+            debugger
+            $.ajax({
+                type: 'POST',
+                url: '../District/District_Data_Test1',
+                dataType: 'json',
+                data: {
+                    taluka: $("#Taluka_Code").val(),
+                    Excel: Excel
+                },
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (data) {
+
+                    if (data.Result) {
+                        $("#state_insp").empty();
+
+                        var list2 = JSON.parse(JSON.stringify(data.Response));
+                        for (i in list2) {
+                            delete list2[i].ID;
+                            delete list2[i].Active;
+
+
+                            var aa = list2[i].Datetime;
+                            var JavaScriptDate = new Date(parseInt(aa.substr(6)));
+                            var dateObject = new Date(JavaScriptDate);
+                            var daate = dateObject.getDate();
+                            var Month = dateObject.getMonth() + 1;
+                            var year = dateObject.getFullYear();
+                            list2[i].Date_Time = daate + "/" + Month + "/" + year;
+
+
+                        }
+                        Bind_Table(list2, "state_insp");
+                        if (Excel == "1") {
+                            window.location.href = "../State/" + data.FileName + ".xlsx";
+                        }
+                    }
+                    else {
+                        Error_Alert(data.Message);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        }
+
+
+    });
+</script>

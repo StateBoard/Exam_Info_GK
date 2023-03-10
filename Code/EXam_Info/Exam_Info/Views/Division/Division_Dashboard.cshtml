@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Division_Dashboard";
+    Layout = "~/Views/Shared/Division_LayoutPage.cshtml";
+}
+
+<h2 style="text-align:center">Division Dashboard</h2>
+
+<div class="row">
+    <table id="divdash"></table>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: 'POST',
+            url: '../Admin/Division_Dash_Details',
+            dataType: 'json',
+            data: {
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (data) {
+
+                var temp = "";
+
+                if (data.Result) {
+                    $("#divdash").empty();
+                    $.each(data.Response, function (i, data) {
+                        debugger
+                        temp += `<tr><td> <h4><a class="blink" style="color:red" href="~/Attachments/` + data.Id + `.jpg">` + (i + 1) + `) ` + data.Heading + `</a></h4></td></tr>`;
+                    });
+                    temp += `</tbody>`;
+                    $("#divdash").append(temp);
+                }
+                else {
+                    Error_Alert(data.Response);
+                }
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    });
+</script>
+

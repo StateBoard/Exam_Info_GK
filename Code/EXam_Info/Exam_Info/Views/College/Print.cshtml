@@ -1,0 +1,353 @@
+﻿@model IEnumerable<Exam_Info.Models.Tbl_Attendance_Web>
+@{
+    ViewBag.Title = "Print";
+    Layout = null;
+}
+
+<link href="~/Design/css/Print.css" rel="stylesheet" />
+
+
+
+<link href="~/Design/StyleSheet/Print.css" rel="stylesheet" />
+<style type="text/css">
+    .modelloader1 {
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        -moz-opacity: 0.8;
+    }
+
+    .centertext {
+        text-align: center;
+    }
+
+    .center {
+        z-index: 1000;
+        margin: 300px auto;
+        padding: 10px;
+        width: 50px;
+        background-color: White;
+        border-radius: 10px;
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -moz-opacity: 1;
+    }
+
+        .center img {
+            height: auto;
+            width: auto;
+        }
+
+    .lblclass {
+        font-weight: bold;
+        font-size: small;
+    }
+
+    .style4 {
+        width: 39px;
+    }
+
+    .style5 {
+        width: 48px;
+    }
+
+    .style7 {
+        width: 290px;
+        font-size: small;
+        text-align: left;
+    }
+
+    .style8 {
+        width: 63px;
+    }
+
+    .style9 {
+        width: 298px;
+        text-align: left;
+        font-size: small;
+    }
+
+    .style10 {
+        width: 19px;
+    }
+
+    .style11 {
+        width: 500px;
+        font-size: small;
+    }
+
+    .style12 {
+        width: 556px;
+        text-align: left;
+        font-size: small;
+    }
+
+    .style14 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .style15 {
+        width: 250px;
+        font-size: small;
+        height: 32px;
+    }
+
+    .style16 {
+        width: 287px;
+    }
+
+    .style17 {
+        width: 19px;
+        height: 11px;
+    }
+
+    .style18 {
+        width: 298px;
+        text-align: left;
+        font-size: small;
+        height: 11px;
+    }
+
+    .style19 {
+        width: 290px;
+        font-size: small;
+        text-align: left;
+        height: 11px;
+    }
+
+    .style20 {
+        height: 16px;
+    }
+
+    .style21 {
+        width: 19px;
+        height: 17px;
+    }
+
+    .style22 {
+        width: 298px;
+        text-align: left;
+        font-size: small;
+        height: 17px;
+    }
+
+    .style23 {
+        width: 290px;
+        font-size: small;
+        text-align: left;
+        height: 17px;
+    }
+
+    .style24 {
+        width: 19px;
+        height: 16px;
+    }
+
+    .style25 {
+        width: 298px;
+        text-align: left;
+        font-size: small;
+        height: 16px;
+    }
+
+    .style26 {
+        width: 290px;
+        font-size: small;
+        text-align: left;
+        height: 16px;
+    }
+
+    .style27 {
+        text-align: center;
+    }
+
+    .style28 {
+        font-family: Arial;
+        border: 1px;
+    }
+
+    .style2 {
+        font-size: medium;
+        font-weight: 700;
+    }
+
+    .style29 {
+        width: 268435456px;
+    }
+
+    .style32 {
+        width: 95px;
+        font-weight: bold
+    }
+
+    .style33 {
+        width: 582px;
+    }
+
+    .style34 {
+        width: 407px;
+        font-size: small;
+    }
+
+    .style36 {
+        width: 295px;
+    }
+
+    .style37 {
+        width: 139px;
+    }
+    tr {
+        text-align:center;
+        height: 40px;
+    }
+        @@media print {
+            table {
+                page-break-after: auto
+            }
+
+            tr {
+                height: 40px;
+                page-break-inside: avoid;
+                page-break-after: auto
+            }
+
+            td {
+                page-break-inside: avoid;
+                page-break-after: auto
+            }
+
+            thead {
+                display: table-header-group
+            }
+
+            tfoot {
+                display: table-footer-group
+            }
+        }
+   
+
+</style>
+
+
+
+
+<div class="book">
+    <div class="page">
+        <div class="subpage" id="subpage">
+
+            <center>
+                <table border="1px" cellspacing="0" style="width: 96%">
+                    <tr>
+                        <td colspan="4">
+
+                            <table style="width: 100%; height: 100px; padding-top:20px;">
+                                <tr>
+                                    <td align="left" class="style5" valign="top">
+                                        <img src="~/Design/Images/MSBSHSE-LOGO.png" alt=""
+                                             style="float: left; height: 100px;" />
+
+                                    </td>
+                                    <td align="center" class="style27" valign="top">
+                                        <strong>
+                                            <span style=" font-family:Arial Unicode MS; text-align: center;"> महाराष्ट्र राज्य माध्यमिक व उच्च माध्यमिक शिक्षण मंडळ, पुणे-४ </span>
+
+
+                                            <br class="style2" />
+                                        </strong><span class="style2">
+                                            Maharashtra State Board of Secondary and <br /> Higher Sceondary Education , Pune-4 <br />
+                                            Student Attendance
+                                            <br />
+
+                                        
+                            </table>
+                            
+                </table>
+            </center>
+            <br />
+
+            <center>    <label style="color:red ;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size:40px">College Index Number : @TempData["Index_No"]</label></center>
+            <div class="table-responsive pt-3  ">
+                <center>
+                    <table border="1px" cellspacing="0" style="width: 96%" id="example" class="display" style="width:100%">
+                        <tr>
+                            <th>
+                                Sr. No
+                            </th>
+                            <th>
+                                Seat No
+                            </th>
+
+
+                            <th>
+                                Batch
+                            </th>
+                            <th>
+                                Attendance
+                            </th>
+                            <th>
+                                Paper_ID
+                            </th>
+                            <th>
+                                Student Signature
+                            </th>
+
+
+                        </tr>
+                        @{int i = 1;}
+                        @foreach (var item in Model)
+                        {
+                    <tr>
+                        <td>
+                            <span>@i</span>
+                            @{i++;}
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(model => item.Roll_No)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => item.Batch)
+                        </td>
+                        @if (item.Attendance_Status == "checked")
+                        {
+                            <td>
+                                Present
+
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Absent
+                            </td>
+                        }
+                        <td>
+                            @Html.DisplayFor(model => item.Paper_ID)
+                        </td>
+                        <td>
+                        </td>
+
+
+                    </tr>
+                        }
+
+
+                    </table>
+                    <div style=" float:right; margin-top:600px; margin-right:60px;font-size:24px; font-weight:bold;">Invigilator Signature</div>
+                    <p style="page-break-after:always;"></p>
+                </center>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+

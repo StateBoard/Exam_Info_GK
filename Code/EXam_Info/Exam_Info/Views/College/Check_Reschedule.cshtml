@@ -1,0 +1,85 @@
+﻿@model Exam_Info.Models.Tbl_Reschedule
+@{
+    ViewBag.Title = "Check_Reschedule";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+}
+
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<h2>Check Reschedule Status</h2>
+<br />
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<form id="batch_form">
+    <div class="row">
+
+        <div class="col-sm-2">
+            <h5>Select Batch :</h5>
+            @Html.DropDownListFor(m => m.Batch, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Batch",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="B1", Value="B1"},
+            new SelectListItem{Text="B2", Value="B2"},
+            new SelectListItem{Text="B3", Value="B3"},
+            new SelectListItem{Text="B4", Value="B4"},
+            new SelectListItem{Text="B5", Value="B5"},
+            new SelectListItem{Text="B6", Value="B6"},
+            new SelectListItem{Text="B9", Value="B9"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+        <div class="col-sm-2">
+            <h5></h5><br />
+            <input type="button" class="btn btn-success" id="btn_submit" value="Submit"><br />
+        </div>
+    </div>
+    <br />
+    <br />
+    <center>
+        <table class="AppFormTable" id="tbl_batch" style="background-color: #e7fafe;"></table>
+    </center>
+</form>
+<script>
+
+    $("#btn_submit").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '../College/Check_Reschedule',
+            dataType: 'json',
+            data: {
+                batch: $("#Batch").val()
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (data) {
+
+                var temp = "";
+                temp += `<thead><tr><td>Sr.No.</td><td>Seat No</td><td>Name</td><td>Batch</td></tr></thead><tbody`;
+                if (data.Result) {
+                    $("#tbl_batch").empty();
+                    $.each(data.Response, function (i, data) {
+                        temp += `<tr><td>` + (i + 1) +`</td><td>` + data.Seat_No + `</td><td>` + data.Name + `</td><td>` + data.Batch + `</td></tr>`;
+                    });
+                    temp += `</tbody>`;
+                    $("#tbl_batch").append(temp);
+                }
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    });
+
+
+
+</script>
+

@@ -1,0 +1,10 @@
+﻿@model Exam_Info.Models.Common_Model
+
+@{
+    ViewBag.Title = "Download_Excel";
+}
+
+@if (TempData["Msg"] != null)
+{
+    <h4 style="color:red">@TempData["Msg"].ToString()</h4>
+}

@@ -1,0 +1,1288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GKJ_2022ModelStoreContainer" CdmEntityContainer="GKJ_2022Entities">
+    <EntitySetMapping Name="Tbl_Batch">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Batch">
+        <MappingFragment StoreEntitySet="Tbl_Batch">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ID_Student" ColumnName="ID_Student" />
+          <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+          <ScalarProperty Name="Total_Student" ColumnName="Total_Student" />
+          <ScalarProperty Name="B1" ColumnName="B1" />
+          <ScalarProperty Name="B2" ColumnName="B2" />
+          <ScalarProperty Name="B3" ColumnName="B3" />
+          <ScalarProperty Name="B4" ColumnName="B4" />
+          <ScalarProperty Name="B5" ColumnName="B5" />
+          <ScalarProperty Name="B6" ColumnName="B6" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Code_Master">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Code_Master">
+        <MappingFragment StoreEntitySet="Tbl_Code_Master">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="division_code" ColumnName="division_code" />
+          <ScalarProperty Name="division_name" ColumnName="division_name" />
+          <ScalarProperty Name="district_code" ColumnName="district_code" />
+          <ScalarProperty Name="district_name" ColumnName="district_name" />
+          <ScalarProperty Name="taluka_code" ColumnName="taluka_code" />
+          <ScalarProperty Name="taluka_name" ColumnName="taluka_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_College_Registration">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_College_Registration">
+        <MappingFragment StoreEntitySet="Tbl_College_Registration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="College_Name" ColumnName="College_Name" />
+          <ScalarProperty Name="College_Address" ColumnName="College_Address" />
+          <ScalarProperty Name="Principal_Name" ColumnName="Principal_Name" />
+          <ScalarProperty Name="Principal_Mobile" ColumnName="Principal_Mobile" />
+          <ScalarProperty Name="Total_Students" ColumnName="Total_Students" />
+          <ScalarProperty Name="Total_Machines" ColumnName="Total_Machines" />
+          <ScalarProperty Name="Total_Teachers" ColumnName="Total_Teachers" />
+          <ScalarProperty Name="IT_Teacher_Name" ColumnName="IT_Teacher_Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Confirm_Password" ColumnName="Confirm_Password" />
+          <ScalarProperty Name="IT_Teachers_MobileNumber1" ColumnName="IT_Teachers_MobileNumber1" />
+          <ScalarProperty Name="IT_Teachers_Mobilenumber2" ColumnName="IT_Teachers_Mobilenumber2" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_District_Co_Ordinator_Details">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_District_Co_Ordinator_Details">
+        <MappingFragment StoreEntitySet="Tbl_District_Co_Ordinator_Details">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="District_Co_Ordinator_ID" ColumnName="District_Co_Ordinator_ID" />
+          <ScalarProperty Name="Co_Ordinator_Name" ColumnName="Co_Ordinator_Name" />
+          <ScalarProperty Name="District_Code" ColumnName="District_Code" />
+          <ScalarProperty Name="Taluka_Code" ColumnName="Taluka_Code" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_District_Co_Ordinator_Registration">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_District_Co_Ordinator_Registration">
+        <MappingFragment StoreEntitySet="Tbl_District_Co_Ordinator_Registration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="College_Name" ColumnName="College_Name" />
+          <ScalarProperty Name="College_Address" ColumnName="College_Address" />
+          <ScalarProperty Name="Coordinator_Name" ColumnName="Coordinator_Name" />
+          <ScalarProperty Name="Coordinator_Mobile" ColumnName="Coordinator_Mobile" />
+          <ScalarProperty Name="Coordinator_Email" ColumnName="Coordinator_Email" />
+          <ScalarProperty Name="Coordinator_Eduction" ColumnName="Coordinator_Eduction" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Confirm_Password" ColumnName="Confirm_Password" />
+          <ScalarProperty Name="Division_Code" ColumnName="Division_Code" />
+          <ScalarProperty Name="District_Code" ColumnName="District_Code" />
+          <ScalarProperty Name="Taluka_Code" ColumnName="Taluka_Code" />
+          <ScalarProperty Name="College_Code" ColumnName="College_Code" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Division_Co_Ordinator_Registration">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Division_Co_Ordinator_Registration">
+        <MappingFragment StoreEntitySet="Tbl_Division_Co_Ordinator_Registration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="College_Name" ColumnName="College_Name" />
+          <ScalarProperty Name="College_Address" ColumnName="College_Address" />
+          <ScalarProperty Name="Coordinator_Name" ColumnName="Coordinator_Name" />
+          <ScalarProperty Name="Coordinator_Mobile" ColumnName="Coordinator_Mobile" />
+          <ScalarProperty Name="Coordinator_Email" ColumnName="Coordinator_Email" />
+          <ScalarProperty Name="Coordinator_Eduction" ColumnName="Coordinator_Eduction" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Confirm_Password" ColumnName="Confirm_Password" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_DTT1">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_DTT1">
+        <MappingFragment StoreEntitySet="Tbl_DTT1">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Index_NoN" ColumnName="Index_NoN" />
+          <ScalarProperty Name="SYS_No" ColumnName="SYS_No" />
+          <ScalarProperty Name="MAC" ColumnName="MAC" />
+          <ScalarProperty Name="Screen_Res" ColumnName="Screen_Res" />
+          <ScalarProperty Name="Screen_Res_Change" ColumnName="Screen_Res_Change" />
+          <ScalarProperty Name="Read_Wrtite_Access" ColumnName="Read_Wrtite_Access" />
+          <ScalarProperty Name="Processor" ColumnName="Processor" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_DTT2">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_DTT2">
+        <MappingFragment StoreEntitySet="Tbl_DTT2">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Index_No_OLD" ColumnName="Index_No_OLD" />
+          <ScalarProperty Name="Read_Wrtite_Access" ColumnName="Read_Wrtite_Access" />
+          <ScalarProperty Name="datetime_set" ColumnName="datetime_set" />
+          <ScalarProperty Name="MAC" ColumnName="MAC" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Inspection">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Inspection">
+        <MappingFragment StoreEntitySet="Tbl_Inspection">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Date_Time" ColumnName="Date_Time" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="SYS_No" ColumnName="SYS_No" />
+          <ScalarProperty Name="OS_Name" ColumnName="OS_Name" />
+          <ScalarProperty Name="Ram" ColumnName="Ram" />
+          <ScalarProperty Name="HDD" ColumnName="HDD" />
+          <ScalarProperty Name="MAC" ColumnName="MAC" />
+          <ScalarProperty Name="Browser_Name" ColumnName="Browser_Name" />
+          <ScalarProperty Name="Extn_IP" ColumnName="Extn_IP" />
+          <ScalarProperty Name="Screen_Res" ColumnName="Screen_Res" />
+          <ScalarProperty Name="IE_Version" ColumnName="IE_Version" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Inspection_Basic_Info">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Inspection_Basic_Info">
+        <MappingFragment StoreEntitySet="Tbl_Inspection_Basic_Info">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="Date_Time" ColumnName="Date_Time" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="College_Name" ColumnName="College_Name" />
+          <ScalarProperty Name="Teacher_Name" ColumnName="Teacher_Name" />
+          <ScalarProperty Name="Contact_No" ColumnName="Contact_No" />
+          <ScalarProperty Name="No_Of_Student" ColumnName="No_Of_Student" />
+          <ScalarProperty Name="No_Of_System" ColumnName="No_Of_System" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Login1">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Login1">
+        <MappingFragment StoreEntitySet="Tbl_Login1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Mac">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Mac">
+        <MappingFragment StoreEntitySet="Tbl_Mac">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Mac_ID" ColumnName="Mac_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Password">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Password">
+        <MappingFragment StoreEntitySet="Tbl_Password">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="B1" ColumnName="B1" />
+          <ScalarProperty Name="B2" ColumnName="B2" />
+          <ScalarProperty Name="B3" ColumnName="B3" />
+          <ScalarProperty Name="B4" ColumnName="B4" />
+          <ScalarProperty Name="B5" ColumnName="B5" />
+          <ScalarProperty Name="B6" ColumnName="B6" />
+          <ScalarProperty Name="B7" ColumnName="B7" />
+          <ScalarProperty Name="Div_Code" ColumnName="Div_Code" />
+          <ScalarProperty Name="Coordinator1_Name" ColumnName="Coordinator1_Name" />
+          <ScalarProperty Name="Coordinator1_Mobile" ColumnName="Coordinator1_Mobile" />
+          <ScalarProperty Name="Coordinator2_Name" ColumnName="Coordinator2_Name" />
+          <ScalarProperty Name="Coordinator2_Mobile" ColumnName="Coordinator2_Mobile" />
+          <ScalarProperty Name="Index_Print_Status" ColumnName="Index_Print_Status" />
+          <ScalarProperty Name="Batch_Print_Status" ColumnName="Batch_Print_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Reschedule">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Reschedule">
+        <MappingFragment StoreEntitySet="Tbl_Reschedule">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Reschedule_Batch" ColumnName="Reschedule_Batch" />
+          <ScalarProperty Name="Approved_By_Division" ColumnName="Approved_By_Division" />
+          <ScalarProperty Name="Approved_By_OLE" ColumnName="Approved_By_OLE" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_State_Co_Ordinator_Registration">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_State_Co_Ordinator_Registration">
+        <MappingFragment StoreEntitySet="Tbl_State_Co_Ordinator_Registration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="College_Name" ColumnName="College_Name" />
+          <ScalarProperty Name="College_Address" ColumnName="College_Address" />
+          <ScalarProperty Name="Coordinator_Name" ColumnName="Coordinator_Name" />
+          <ScalarProperty Name="Coordinator_Mobile" ColumnName="Coordinator_Mobile" />
+          <ScalarProperty Name="Coordinator_Email" ColumnName="Coordinator_Email" />
+          <ScalarProperty Name="Coordinator_Eduction" ColumnName="Coordinator_Eduction" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Confirm_Password" ColumnName="Confirm_Password" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Student">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Student">
+        <MappingFragment StoreEntitySet="Tbl_Student">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="seat" ColumnName="seat" />
+          <ScalarProperty Name="div" ColumnName="div" />
+          <ScalarProperty Name="sch" ColumnName="sch" />
+          <ScalarProperty Name="srno" ColumnName="srno" />
+          <ScalarProperty Name="stream" ColumnName="stream" />
+          <ScalarProperty Name="cent" ColumnName="cent" />
+          <ScalarProperty Name="hand" ColumnName="hand" />
+          <ScalarProperty Name="fresh_rpt" ColumnName="fresh_rpt" />
+          <ScalarProperty Name="reg_rpt" ColumnName="reg_rpt" />
+          <ScalarProperty Name="medium" ColumnName="medium" />
+          <ScalarProperty Name="cname" ColumnName="cname" />
+          <ScalarProperty Name="mother" ColumnName="mother" />
+          <ScalarProperty Name="sub2" ColumnName="sub2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ITCOLLEGELIST">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_ITCOLLEGELIST">
+        <MappingFragment StoreEntitySet="Tbl_ITCOLLEGELIST">
+          <ScalarProperty Name="pass_sts" ColumnName="pass_sts" />
+          <ScalarProperty Name="statusadd" ColumnName="statusadd" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Reschedule_Student">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Reschedule_Student">
+        <MappingFragment StoreEntitySet="Tbl_Reschedule_Student">
+          <ScalarProperty Name="Division_Code" ColumnName="Division_Code" />
+          <ScalarProperty Name="Approved_By_OLE" ColumnName="Approved_By_OLE" />
+          <ScalarProperty Name="Approved_By_Division" ColumnName="Approved_By_Division" />
+          <ScalarProperty Name="Reschedule_Batch" ColumnName="Reschedule_Batch" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Initial_Batch" ColumnName="Initial_Batch" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Reschedule_College">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Reschedule_College">
+        <MappingFragment StoreEntitySet="Tbl_Reschedule_College">
+          <ScalarProperty Name="IP_Adress" ColumnName="IP_Adress" />
+          <ScalarProperty Name="Date_Time" ColumnName="Date_Time" />
+          <ScalarProperty Name="Division_Code" ColumnName="Division_Code" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Attendance">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Attendance">
+        <MappingFragment StoreEntitySet="Tbl_Attendance">
+          <ScalarProperty Name="MAC" ColumnName="MAC" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="time_time" ColumnName="time_time" />
+          <ScalarProperty Name="Seat_no" ColumnName="Seat_no" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Attendance_Web">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Attendance_Web">
+        <MappingFragment StoreEntitySet="Tbl_Attendance_Web">
+          <ScalarProperty Name="Attendance_Status" ColumnName="Attendance_Status" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="Exam_Login_Status" ColumnName="Exam_Login_Status" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Roll_No" ColumnName="Roll_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Login">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Login">
+        <MappingFragment StoreEntitySet="Tbl_Login">
+          <ScalarProperty Name="Coll_Add_Student" ColumnName="Coll_Add_Student" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+          <ScalarProperty Name="Reschedule_Approve_BY" ColumnName="Reschedule_Approve_BY" />
+          <ScalarProperty Name="Reschedule_Paper_ID" ColumnName="Reschedule_Paper_ID" />
+          <ScalarProperty Name="Reschedule_Batch" ColumnName="Reschedule_Batch" />
+          <ScalarProperty Name="Reschedule_Status" ColumnName="Reschedule_Status" />
+          <ScalarProperty Name="Hand" ColumnName="Hand" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="Div" ColumnName="Div" />
+          <ScalarProperty Name="Stream" ColumnName="Stream" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Mother_Name" ColumnName="Mother_Name" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_DTT3">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_DTT3">
+        <MappingFragment StoreEntitySet="Tbl_DTT3">
+          <ScalarProperty Name="Hit" ColumnName="Hit" />
+          <ScalarProperty Name="QP" ColumnName="QP" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="MAC" ColumnName="MAC" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Index_NoN" ColumnName="Index_NoN" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Batch_Activation">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Batch_Activation">
+        <MappingFragment StoreEntitySet="Tbl_Batch_Activation">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admin_tbl">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Admin_tbl">
+        <MappingFragment StoreEntitySet="Admin_tbl">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_41to45_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_41to45_Ans">
+        <MappingFragment StoreEntitySet="Tbl_41to45_Ans">
+          <ScalarProperty Name="Q45Ans" ColumnName="Q45Ans" />
+          <ScalarProperty Name="Q44Ans" ColumnName="Q44Ans" />
+          <ScalarProperty Name="Q43Ans" ColumnName="Q43Ans" />
+          <ScalarProperty Name="Q42Ans" ColumnName="Q42Ans" />
+          <ScalarProperty Name="Q41Ans" ColumnName="Q41Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Reschedule_ApproveBy_Division">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Reschedule_ApproveBy_Division">
+        <MappingFragment StoreEntitySet="Tbl_Reschedule_ApproveBy_Division">
+          <ScalarProperty Name="Division_Code" ColumnName="Division_Code" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="All_tbl_Final_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.All_tbl_Final_Ans">
+        <MappingFragment StoreEntitySet="All_tbl_Final_Ans">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Q_100Ans" ColumnName="Q_100Ans" />
+          <ScalarProperty Name="Q_99Ans" ColumnName="Q_99Ans" />
+          <ScalarProperty Name="Q_98Ans" ColumnName="Q_98Ans" />
+          <ScalarProperty Name="Q_97Ans" ColumnName="Q_97Ans" />
+          <ScalarProperty Name="Q_96Ans" ColumnName="Q_96Ans" />
+          <ScalarProperty Name="Q_95Ans" ColumnName="Q_95Ans" />
+          <ScalarProperty Name="Q_94Ans" ColumnName="Q_94Ans" />
+          <ScalarProperty Name="Q_93Ans" ColumnName="Q_93Ans" />
+          <ScalarProperty Name="Q_92Ans" ColumnName="Q_92Ans" />
+          <ScalarProperty Name="Q_91Ans" ColumnName="Q_91Ans" />
+          <ScalarProperty Name="Q_90Ans" ColumnName="Q_90Ans" />
+          <ScalarProperty Name="Q_89Ans" ColumnName="Q_89Ans" />
+          <ScalarProperty Name="Q_88Ans" ColumnName="Q_88Ans" />
+          <ScalarProperty Name="Q_87Ans" ColumnName="Q_87Ans" />
+          <ScalarProperty Name="Q_86Ans" ColumnName="Q_86Ans" />
+          <ScalarProperty Name="Q_85Ans" ColumnName="Q_85Ans" />
+          <ScalarProperty Name="Q_84Ans" ColumnName="Q_84Ans" />
+          <ScalarProperty Name="Q_83Ans" ColumnName="Q_83Ans" />
+          <ScalarProperty Name="Q_82Ans" ColumnName="Q_82Ans" />
+          <ScalarProperty Name="Q_81Ans" ColumnName="Q_81Ans" />
+          <ScalarProperty Name="Q_80Ans" ColumnName="Q_80Ans" />
+          <ScalarProperty Name="Q_79Ans" ColumnName="Q_79Ans" />
+          <ScalarProperty Name="Q_78Ans" ColumnName="Q_78Ans" />
+          <ScalarProperty Name="Q_77Ans" ColumnName="Q_77Ans" />
+          <ScalarProperty Name="Q_76Ans" ColumnName="Q_76Ans" />
+          <ScalarProperty Name="Q_75Ans" ColumnName="Q_75Ans" />
+          <ScalarProperty Name="Q_74Ans" ColumnName="Q_74Ans" />
+          <ScalarProperty Name="Q_73Ans" ColumnName="Q_73Ans" />
+          <ScalarProperty Name="Q_72Ans" ColumnName="Q_72Ans" />
+          <ScalarProperty Name="Q_71Ans" ColumnName="Q_71Ans" />
+          <ScalarProperty Name="Q_70Ans" ColumnName="Q_70Ans" />
+          <ScalarProperty Name="Q_69Ans" ColumnName="Q_69Ans" />
+          <ScalarProperty Name="Q_68Ans" ColumnName="Q_68Ans" />
+          <ScalarProperty Name="Q_67Ans" ColumnName="Q_67Ans" />
+          <ScalarProperty Name="Q_66Ans" ColumnName="Q_66Ans" />
+          <ScalarProperty Name="Q_65Ans" ColumnName="Q_65Ans" />
+          <ScalarProperty Name="Q_64Ans" ColumnName="Q_64Ans" />
+          <ScalarProperty Name="Q_63Ans" ColumnName="Q_63Ans" />
+          <ScalarProperty Name="Q_62Ans" ColumnName="Q_62Ans" />
+          <ScalarProperty Name="Q_61Ans" ColumnName="Q_61Ans" />
+          <ScalarProperty Name="Q_60Ans" ColumnName="Q_60Ans" />
+          <ScalarProperty Name="Q_59Ans" ColumnName="Q_59Ans" />
+          <ScalarProperty Name="Q_58Ans" ColumnName="Q_58Ans" />
+          <ScalarProperty Name="Q_57Ans" ColumnName="Q_57Ans" />
+          <ScalarProperty Name="Q_56Ans" ColumnName="Q_56Ans" />
+          <ScalarProperty Name="Q_55Ans" ColumnName="Q_55Ans" />
+          <ScalarProperty Name="Q_54Ans" ColumnName="Q_54Ans" />
+          <ScalarProperty Name="Q_53Ans" ColumnName="Q_53Ans" />
+          <ScalarProperty Name="Q_52Ans" ColumnName="Q_52Ans" />
+          <ScalarProperty Name="Q_51Ans" ColumnName="Q_51Ans" />
+          <ScalarProperty Name="Q_50Ans" ColumnName="Q_50Ans" />
+          <ScalarProperty Name="Q_49Ans" ColumnName="Q_49Ans" />
+          <ScalarProperty Name="Q_48Ans" ColumnName="Q_48Ans" />
+          <ScalarProperty Name="Q_47Ans" ColumnName="Q_47Ans" />
+          <ScalarProperty Name="Q_46Ans" ColumnName="Q_46Ans" />
+          <ScalarProperty Name="Q_45Ans" ColumnName="Q_45Ans" />
+          <ScalarProperty Name="Q_44Ans" ColumnName="Q_44Ans" />
+          <ScalarProperty Name="Q_43Ans" ColumnName="Q_43Ans" />
+          <ScalarProperty Name="Q_42Ans" ColumnName="Q_42Ans" />
+          <ScalarProperty Name="Q_41Ans" ColumnName="Q_41Ans" />
+          <ScalarProperty Name="Q_40Ans" ColumnName="Q_40Ans" />
+          <ScalarProperty Name="Q_39Ans" ColumnName="Q_39Ans" />
+          <ScalarProperty Name="Q_38Ans" ColumnName="Q_38Ans" />
+          <ScalarProperty Name="Q_37Ans" ColumnName="Q_37Ans" />
+          <ScalarProperty Name="Q_36Ans" ColumnName="Q_36Ans" />
+          <ScalarProperty Name="Q_35Ans" ColumnName="Q_35Ans" />
+          <ScalarProperty Name="Q_34Ans" ColumnName="Q_34Ans" />
+          <ScalarProperty Name="Q_33Ans" ColumnName="Q_33Ans" />
+          <ScalarProperty Name="Q_32Ans" ColumnName="Q_32Ans" />
+          <ScalarProperty Name="Q_31Ans" ColumnName="Q_31Ans" />
+          <ScalarProperty Name="Q_30Ans" ColumnName="Q_30Ans" />
+          <ScalarProperty Name="Q_29Ans" ColumnName="Q_29Ans" />
+          <ScalarProperty Name="Q_28Ans" ColumnName="Q_28Ans" />
+          <ScalarProperty Name="Q_27Ans" ColumnName="Q_27Ans" />
+          <ScalarProperty Name="Q_26Ans" ColumnName="Q_26Ans" />
+          <ScalarProperty Name="Q_25Ans" ColumnName="Q_25Ans" />
+          <ScalarProperty Name="Q_24Ans" ColumnName="Q_24Ans" />
+          <ScalarProperty Name="Q_23Ans" ColumnName="Q_23Ans" />
+          <ScalarProperty Name="Q_22Ans" ColumnName="Q_22Ans" />
+          <ScalarProperty Name="Q_21Ans" ColumnName="Q_21Ans" />
+          <ScalarProperty Name="Q_20Ans" ColumnName="Q_20Ans" />
+          <ScalarProperty Name="Q_19Ans" ColumnName="Q_19Ans" />
+          <ScalarProperty Name="Q_18Ans" ColumnName="Q_18Ans" />
+          <ScalarProperty Name="Q_17Ans" ColumnName="Q_17Ans" />
+          <ScalarProperty Name="Q_16Ans" ColumnName="Q_16Ans" />
+          <ScalarProperty Name="Q_15Ans" ColumnName="Q_15Ans" />
+          <ScalarProperty Name="Q_14Ans" ColumnName="Q_14Ans" />
+          <ScalarProperty Name="Q_13Ans" ColumnName="Q_13Ans" />
+          <ScalarProperty Name="Q_12Ans" ColumnName="Q_12Ans" />
+          <ScalarProperty Name="Q_11Ans" ColumnName="Q_11Ans" />
+          <ScalarProperty Name="Q_10Ans" ColumnName="Q_10Ans" />
+          <ScalarProperty Name="Q_9Ans" ColumnName="Q_9Ans" />
+          <ScalarProperty Name="Q_8Ans" ColumnName="Q_8Ans" />
+          <ScalarProperty Name="Q_7Ans" ColumnName="Q_7Ans" />
+          <ScalarProperty Name="Q_6Ans" ColumnName="Q_6Ans" />
+          <ScalarProperty Name="Q_5Ans" ColumnName="Q_5Ans" />
+          <ScalarProperty Name="Q_4Ans" ColumnName="Q_4Ans" />
+          <ScalarProperty Name="Q_3Ans" ColumnName="Q_3Ans" />
+          <ScalarProperty Name="Q_2Ans" ColumnName="Q_2Ans" />
+          <ScalarProperty Name="Q1_Ans" ColumnName="Q1_Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_100_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_100_Ans">
+        <MappingFragment StoreEntitySet="Tbl_100_Ans">
+          <ScalarProperty Name="Q100Ans" ColumnName="Q100Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_11to15_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_11to15_Ans">
+        <MappingFragment StoreEntitySet="Tbl_11to15_Ans">
+          <ScalarProperty Name="Q15Ans" ColumnName="Q15Ans" />
+          <ScalarProperty Name="Q14Ans" ColumnName="Q14Ans" />
+          <ScalarProperty Name="Q13Ans" ColumnName="Q13Ans" />
+          <ScalarProperty Name="Q12Ans" ColumnName="Q12Ans" />
+          <ScalarProperty Name="Q11Ans" ColumnName="Q11Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_1to5_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_1to5_Ans">
+        <MappingFragment StoreEntitySet="Tbl_1to5_Ans">
+          <ScalarProperty Name="Q5Ans" ColumnName="Q5Ans" />
+          <ScalarProperty Name="Q4Ans" ColumnName="Q4Ans" />
+          <ScalarProperty Name="Q3Ans" ColumnName="Q3Ans" />
+          <ScalarProperty Name="Q2Ans" ColumnName="Q2Ans" />
+          <ScalarProperty Name="Q1Ans" ColumnName="Q1Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_21to25_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_21to25_Ans">
+        <MappingFragment StoreEntitySet="Tbl_21to25_Ans">
+          <ScalarProperty Name="Q25Ans" ColumnName="Q25Ans" />
+          <ScalarProperty Name="Q24Ans" ColumnName="Q24Ans" />
+          <ScalarProperty Name="Q23Ans" ColumnName="Q23Ans" />
+          <ScalarProperty Name="Q22Ans" ColumnName="Q22Ans" />
+          <ScalarProperty Name="Q21Ans" ColumnName="Q21Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_26to30_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_26to30_Ans">
+        <MappingFragment StoreEntitySet="Tbl_26to30_Ans">
+          <ScalarProperty Name="Q30Ans" ColumnName="Q30Ans" />
+          <ScalarProperty Name="Q29Ans" ColumnName="Q29Ans" />
+          <ScalarProperty Name="Q28Ans" ColumnName="Q28Ans" />
+          <ScalarProperty Name="Q27Ans" ColumnName="Q27Ans" />
+          <ScalarProperty Name="Q26Ans" ColumnName="Q26Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_31to35_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_31to35_Ans">
+        <MappingFragment StoreEntitySet="Tbl_31to35_Ans">
+          <ScalarProperty Name="Q35Ans" ColumnName="Q35Ans" />
+          <ScalarProperty Name="Q34Ans" ColumnName="Q34Ans" />
+          <ScalarProperty Name="Q33Ans" ColumnName="Q33Ans" />
+          <ScalarProperty Name="Q32Ans" ColumnName="Q32Ans" />
+          <ScalarProperty Name="Q31Ans" ColumnName="Q31Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_36to40_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_36to40_Ans">
+        <MappingFragment StoreEntitySet="Tbl_36to40_Ans">
+          <ScalarProperty Name="Q40Ans" ColumnName="Q40Ans" />
+          <ScalarProperty Name="Q39Ans" ColumnName="Q39Ans" />
+          <ScalarProperty Name="Q38Ans" ColumnName="Q38Ans" />
+          <ScalarProperty Name="Q37Ans" ColumnName="Q37Ans" />
+          <ScalarProperty Name="Q36Ans" ColumnName="Q36Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_46to50_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_46to50_Ans">
+        <MappingFragment StoreEntitySet="Tbl_46to50_Ans">
+          <ScalarProperty Name="Q50Ans" ColumnName="Q50Ans" />
+          <ScalarProperty Name="Q49Ans" ColumnName="Q49Ans" />
+          <ScalarProperty Name="Q48Ans" ColumnName="Q48Ans" />
+          <ScalarProperty Name="Q47Ans" ColumnName="Q47Ans" />
+          <ScalarProperty Name="Q46Ans" ColumnName="Q46Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_51to55_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_51to55_Ans">
+        <MappingFragment StoreEntitySet="Tbl_51to55_Ans">
+          <ScalarProperty Name="Q55Ans" ColumnName="Q55Ans" />
+          <ScalarProperty Name="Q54Ans" ColumnName="Q54Ans" />
+          <ScalarProperty Name="Q53Ans" ColumnName="Q53Ans" />
+          <ScalarProperty Name="Q52Ans" ColumnName="Q52Ans" />
+          <ScalarProperty Name="Q51Ans" ColumnName="Q51Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_56to60_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_56to60_Ans">
+        <MappingFragment StoreEntitySet="Tbl_56to60_Ans">
+          <ScalarProperty Name="Q60Ans" ColumnName="Q60Ans" />
+          <ScalarProperty Name="Q59Ans" ColumnName="Q59Ans" />
+          <ScalarProperty Name="Q58Ans" ColumnName="Q58Ans" />
+          <ScalarProperty Name="Q57Ans" ColumnName="Q57Ans" />
+          <ScalarProperty Name="Q56Ans" ColumnName="Q56Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_61to65_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_61to65_Ans">
+        <MappingFragment StoreEntitySet="Tbl_61to65_Ans">
+          <ScalarProperty Name="Q65Ans" ColumnName="Q65Ans" />
+          <ScalarProperty Name="Q64Ans" ColumnName="Q64Ans" />
+          <ScalarProperty Name="Q63Ans" ColumnName="Q63Ans" />
+          <ScalarProperty Name="Q62Ans" ColumnName="Q62Ans" />
+          <ScalarProperty Name="Q61Ans" ColumnName="Q61Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_66to70_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_66to70_Ans">
+        <MappingFragment StoreEntitySet="Tbl_66to70_Ans">
+          <ScalarProperty Name="Q70Ans" ColumnName="Q70Ans" />
+          <ScalarProperty Name="Q69Ans" ColumnName="Q69Ans" />
+          <ScalarProperty Name="Q68Ans" ColumnName="Q68Ans" />
+          <ScalarProperty Name="Q67Ans" ColumnName="Q67Ans" />
+          <ScalarProperty Name="Q66Ans" ColumnName="Q66Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_6to10_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_6to10_Ans">
+        <MappingFragment StoreEntitySet="Tbl_6to10_Ans">
+          <ScalarProperty Name="Q10Ans" ColumnName="Q10Ans" />
+          <ScalarProperty Name="Q9Ans" ColumnName="Q9Ans" />
+          <ScalarProperty Name="Q8Ans" ColumnName="Q8Ans" />
+          <ScalarProperty Name="Q7Ans" ColumnName="Q7Ans" />
+          <ScalarProperty Name="Q6Ans" ColumnName="Q6Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_71to75_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_71to75_Ans">
+        <MappingFragment StoreEntitySet="Tbl_71to75_Ans">
+          <ScalarProperty Name="Q75Ans" ColumnName="Q75Ans" />
+          <ScalarProperty Name="Q74Ans" ColumnName="Q74Ans" />
+          <ScalarProperty Name="Q73Ans" ColumnName="Q73Ans" />
+          <ScalarProperty Name="Q72Ans" ColumnName="Q72Ans" />
+          <ScalarProperty Name="Q71Ans" ColumnName="Q71Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_76to80_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_76to80_Ans">
+        <MappingFragment StoreEntitySet="Tbl_76to80_Ans">
+          <ScalarProperty Name="Q80Ans" ColumnName="Q80Ans" />
+          <ScalarProperty Name="Q79Ans" ColumnName="Q79Ans" />
+          <ScalarProperty Name="Q78Ans" ColumnName="Q78Ans" />
+          <ScalarProperty Name="Q77Ans" ColumnName="Q77Ans" />
+          <ScalarProperty Name="Q76Ans" ColumnName="Q76Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_81to85_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_81to85_Ans">
+        <MappingFragment StoreEntitySet="Tbl_81to85_Ans">
+          <ScalarProperty Name="Q85Ans" ColumnName="Q85Ans" />
+          <ScalarProperty Name="Q84Ans" ColumnName="Q84Ans" />
+          <ScalarProperty Name="Q83Ans" ColumnName="Q83Ans" />
+          <ScalarProperty Name="Q82Ans" ColumnName="Q82Ans" />
+          <ScalarProperty Name="Q81Ans" ColumnName="Q81Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_86to90_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_86to90_Ans">
+        <MappingFragment StoreEntitySet="Tbl_86to90_Ans">
+          <ScalarProperty Name="Q90Ans" ColumnName="Q90Ans" />
+          <ScalarProperty Name="Q89Ans" ColumnName="Q89Ans" />
+          <ScalarProperty Name="Q88Ans" ColumnName="Q88Ans" />
+          <ScalarProperty Name="Q87Ans" ColumnName="Q87Ans" />
+          <ScalarProperty Name="Q86Ans" ColumnName="Q86Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_91to95_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_91to95_Ans">
+        <MappingFragment StoreEntitySet="Tbl_91to95_Ans">
+          <ScalarProperty Name="Q95Ans" ColumnName="Q95Ans" />
+          <ScalarProperty Name="Q94Ans" ColumnName="Q94Ans" />
+          <ScalarProperty Name="Q93Ans" ColumnName="Q93Ans" />
+          <ScalarProperty Name="Q92Ans" ColumnName="Q92Ans" />
+          <ScalarProperty Name="Q91Ans" ColumnName="Q91Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_96to97_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_96to97_Ans">
+        <MappingFragment StoreEntitySet="Tbl_96to97_Ans">
+          <ScalarProperty Name="Q97Ans" ColumnName="Q97Ans" />
+          <ScalarProperty Name="Q96Ans" ColumnName="Q96Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_98_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_98_Ans">
+        <MappingFragment StoreEntitySet="Tbl_98_Ans">
+          <ScalarProperty Name="Q98Ans" ColumnName="Q98Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_99_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_99_Ans">
+        <MappingFragment StoreEntitySet="Tbl_99_Ans">
+          <ScalarProperty Name="Q99Ans" ColumnName="Q99Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Final_Ans">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Final_Ans">
+        <MappingFragment StoreEntitySet="Tbl_Final_Ans">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Q_100Ans" ColumnName="Q_100Ans" />
+          <ScalarProperty Name="Q_99Ans" ColumnName="Q_99Ans" />
+          <ScalarProperty Name="Q_98Ans" ColumnName="Q_98Ans" />
+          <ScalarProperty Name="Q_97Ans" ColumnName="Q_97Ans" />
+          <ScalarProperty Name="Q_96Ans" ColumnName="Q_96Ans" />
+          <ScalarProperty Name="Q_95Ans" ColumnName="Q_95Ans" />
+          <ScalarProperty Name="Q_94Ans" ColumnName="Q_94Ans" />
+          <ScalarProperty Name="Q_93Ans" ColumnName="Q_93Ans" />
+          <ScalarProperty Name="Q_92Ans" ColumnName="Q_92Ans" />
+          <ScalarProperty Name="Q_91Ans" ColumnName="Q_91Ans" />
+          <ScalarProperty Name="Q_90Ans" ColumnName="Q_90Ans" />
+          <ScalarProperty Name="Q_89Ans" ColumnName="Q_89Ans" />
+          <ScalarProperty Name="Q_88Ans" ColumnName="Q_88Ans" />
+          <ScalarProperty Name="Q_87Ans" ColumnName="Q_87Ans" />
+          <ScalarProperty Name="Q_86Ans" ColumnName="Q_86Ans" />
+          <ScalarProperty Name="Q_85Ans" ColumnName="Q_85Ans" />
+          <ScalarProperty Name="Q_84Ans" ColumnName="Q_84Ans" />
+          <ScalarProperty Name="Q_83Ans" ColumnName="Q_83Ans" />
+          <ScalarProperty Name="Q_82Ans" ColumnName="Q_82Ans" />
+          <ScalarProperty Name="Q_81Ans" ColumnName="Q_81Ans" />
+          <ScalarProperty Name="Q_80Ans" ColumnName="Q_80Ans" />
+          <ScalarProperty Name="Q_79Ans" ColumnName="Q_79Ans" />
+          <ScalarProperty Name="Q_78Ans" ColumnName="Q_78Ans" />
+          <ScalarProperty Name="Q_77Ans" ColumnName="Q_77Ans" />
+          <ScalarProperty Name="Q_76Ans" ColumnName="Q_76Ans" />
+          <ScalarProperty Name="Q_75Ans" ColumnName="Q_75Ans" />
+          <ScalarProperty Name="Q_74Ans" ColumnName="Q_74Ans" />
+          <ScalarProperty Name="Q_73Ans" ColumnName="Q_73Ans" />
+          <ScalarProperty Name="Q_72Ans" ColumnName="Q_72Ans" />
+          <ScalarProperty Name="Q_71Ans" ColumnName="Q_71Ans" />
+          <ScalarProperty Name="Q_70Ans" ColumnName="Q_70Ans" />
+          <ScalarProperty Name="Q_69Ans" ColumnName="Q_69Ans" />
+          <ScalarProperty Name="Q_68Ans" ColumnName="Q_68Ans" />
+          <ScalarProperty Name="Q_67Ans" ColumnName="Q_67Ans" />
+          <ScalarProperty Name="Q_66Ans" ColumnName="Q_66Ans" />
+          <ScalarProperty Name="Q_65Ans" ColumnName="Q_65Ans" />
+          <ScalarProperty Name="Q_64Ans" ColumnName="Q_64Ans" />
+          <ScalarProperty Name="Q_63Ans" ColumnName="Q_63Ans" />
+          <ScalarProperty Name="Q_62Ans" ColumnName="Q_62Ans" />
+          <ScalarProperty Name="Q_61Ans" ColumnName="Q_61Ans" />
+          <ScalarProperty Name="Q_60Ans" ColumnName="Q_60Ans" />
+          <ScalarProperty Name="Q_59Ans" ColumnName="Q_59Ans" />
+          <ScalarProperty Name="Q_58Ans" ColumnName="Q_58Ans" />
+          <ScalarProperty Name="Q_57Ans" ColumnName="Q_57Ans" />
+          <ScalarProperty Name="Q_56Ans" ColumnName="Q_56Ans" />
+          <ScalarProperty Name="Q_55Ans" ColumnName="Q_55Ans" />
+          <ScalarProperty Name="Q_54Ans" ColumnName="Q_54Ans" />
+          <ScalarProperty Name="Q_53Ans" ColumnName="Q_53Ans" />
+          <ScalarProperty Name="Q_52Ans" ColumnName="Q_52Ans" />
+          <ScalarProperty Name="Q_51Ans" ColumnName="Q_51Ans" />
+          <ScalarProperty Name="Q_50Ans" ColumnName="Q_50Ans" />
+          <ScalarProperty Name="Q_49Ans" ColumnName="Q_49Ans" />
+          <ScalarProperty Name="Q_48Ans" ColumnName="Q_48Ans" />
+          <ScalarProperty Name="Q_47Ans" ColumnName="Q_47Ans" />
+          <ScalarProperty Name="Q_46Ans" ColumnName="Q_46Ans" />
+          <ScalarProperty Name="Q_45Ans" ColumnName="Q_45Ans" />
+          <ScalarProperty Name="Q_44Ans" ColumnName="Q_44Ans" />
+          <ScalarProperty Name="Q_43Ans" ColumnName="Q_43Ans" />
+          <ScalarProperty Name="Q_42Ans" ColumnName="Q_42Ans" />
+          <ScalarProperty Name="Q_41Ans" ColumnName="Q_41Ans" />
+          <ScalarProperty Name="Q_40Ans" ColumnName="Q_40Ans" />
+          <ScalarProperty Name="Q_39Ans" ColumnName="Q_39Ans" />
+          <ScalarProperty Name="Q_38Ans" ColumnName="Q_38Ans" />
+          <ScalarProperty Name="Q_37Ans" ColumnName="Q_37Ans" />
+          <ScalarProperty Name="Q_36Ans" ColumnName="Q_36Ans" />
+          <ScalarProperty Name="Q_35Ans" ColumnName="Q_35Ans" />
+          <ScalarProperty Name="Q_34Ans" ColumnName="Q_34Ans" />
+          <ScalarProperty Name="Q_33Ans" ColumnName="Q_33Ans" />
+          <ScalarProperty Name="Q_32Ans" ColumnName="Q_32Ans" />
+          <ScalarProperty Name="Q_31Ans" ColumnName="Q_31Ans" />
+          <ScalarProperty Name="Q_30Ans" ColumnName="Q_30Ans" />
+          <ScalarProperty Name="Q_29Ans" ColumnName="Q_29Ans" />
+          <ScalarProperty Name="Q_28Ans" ColumnName="Q_28Ans" />
+          <ScalarProperty Name="Q_27Ans" ColumnName="Q_27Ans" />
+          <ScalarProperty Name="Q_26Ans" ColumnName="Q_26Ans" />
+          <ScalarProperty Name="Q_25Ans" ColumnName="Q_25Ans" />
+          <ScalarProperty Name="Q_24Ans" ColumnName="Q_24Ans" />
+          <ScalarProperty Name="Q_23Ans" ColumnName="Q_23Ans" />
+          <ScalarProperty Name="Q_22Ans" ColumnName="Q_22Ans" />
+          <ScalarProperty Name="Q_21Ans" ColumnName="Q_21Ans" />
+          <ScalarProperty Name="Q_20Ans" ColumnName="Q_20Ans" />
+          <ScalarProperty Name="Q_19Ans" ColumnName="Q_19Ans" />
+          <ScalarProperty Name="Q_18Ans" ColumnName="Q_18Ans" />
+          <ScalarProperty Name="Q_17Ans" ColumnName="Q_17Ans" />
+          <ScalarProperty Name="Q_16Ans" ColumnName="Q_16Ans" />
+          <ScalarProperty Name="Q_15Ans" ColumnName="Q_15Ans" />
+          <ScalarProperty Name="Q_14Ans" ColumnName="Q_14Ans" />
+          <ScalarProperty Name="Q_13Ans" ColumnName="Q_13Ans" />
+          <ScalarProperty Name="Q_12Ans" ColumnName="Q_12Ans" />
+          <ScalarProperty Name="Q_11Ans" ColumnName="Q_11Ans" />
+          <ScalarProperty Name="Q_10Ans" ColumnName="Q_10Ans" />
+          <ScalarProperty Name="Q_9Ans" ColumnName="Q_9Ans" />
+          <ScalarProperty Name="Q_8Ans" ColumnName="Q_8Ans" />
+          <ScalarProperty Name="Q_7Ans" ColumnName="Q_7Ans" />
+          <ScalarProperty Name="Q_6Ans" ColumnName="Q_6Ans" />
+          <ScalarProperty Name="Q_5Ans" ColumnName="Q_5Ans" />
+          <ScalarProperty Name="Q_4Ans" ColumnName="Q_4Ans" />
+          <ScalarProperty Name="Q_3Ans" ColumnName="Q_3Ans" />
+          <ScalarProperty Name="Q_2Ans" ColumnName="Q_2Ans" />
+          <ScalarProperty Name="Q1_Ans" ColumnName="Q1_Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Decode_Answer">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Decode_Answer">
+        <MappingFragment StoreEntitySet="Tbl_Decode_Answer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Q_100Ans" ColumnName="Q_100Ans" />
+          <ScalarProperty Name="Q_99Ans" ColumnName="Q_99Ans" />
+          <ScalarProperty Name="Q_98Ans" ColumnName="Q_98Ans" />
+          <ScalarProperty Name="Q_97Ans" ColumnName="Q_97Ans" />
+          <ScalarProperty Name="Q_96Ans" ColumnName="Q_96Ans" />
+          <ScalarProperty Name="Q_95Ans" ColumnName="Q_95Ans" />
+          <ScalarProperty Name="Q_94Ans" ColumnName="Q_94Ans" />
+          <ScalarProperty Name="Q_93Ans" ColumnName="Q_93Ans" />
+          <ScalarProperty Name="Q_92Ans" ColumnName="Q_92Ans" />
+          <ScalarProperty Name="Q_91Ans" ColumnName="Q_91Ans" />
+          <ScalarProperty Name="Q_90Ans" ColumnName="Q_90Ans" />
+          <ScalarProperty Name="Q_89Ans" ColumnName="Q_89Ans" />
+          <ScalarProperty Name="Q_88Ans" ColumnName="Q_88Ans" />
+          <ScalarProperty Name="Q_87Ans" ColumnName="Q_87Ans" />
+          <ScalarProperty Name="Q_86Ans" ColumnName="Q_86Ans" />
+          <ScalarProperty Name="Q_85Ans" ColumnName="Q_85Ans" />
+          <ScalarProperty Name="Q_84Ans" ColumnName="Q_84Ans" />
+          <ScalarProperty Name="Q_83Ans" ColumnName="Q_83Ans" />
+          <ScalarProperty Name="Q_82Ans" ColumnName="Q_82Ans" />
+          <ScalarProperty Name="Q_81Ans" ColumnName="Q_81Ans" />
+          <ScalarProperty Name="Q_80Ans" ColumnName="Q_80Ans" />
+          <ScalarProperty Name="Q_79Ans" ColumnName="Q_79Ans" />
+          <ScalarProperty Name="Q_78Ans" ColumnName="Q_78Ans" />
+          <ScalarProperty Name="Q_77Ans" ColumnName="Q_77Ans" />
+          <ScalarProperty Name="Q_76Ans" ColumnName="Q_76Ans" />
+          <ScalarProperty Name="Q_75Ans" ColumnName="Q_75Ans" />
+          <ScalarProperty Name="Q_74Ans" ColumnName="Q_74Ans" />
+          <ScalarProperty Name="Q_73Ans" ColumnName="Q_73Ans" />
+          <ScalarProperty Name="Q_72Ans" ColumnName="Q_72Ans" />
+          <ScalarProperty Name="Q_71Ans" ColumnName="Q_71Ans" />
+          <ScalarProperty Name="Q_70Ans" ColumnName="Q_70Ans" />
+          <ScalarProperty Name="Q_69Ans" ColumnName="Q_69Ans" />
+          <ScalarProperty Name="Q_68Ans" ColumnName="Q_68Ans" />
+          <ScalarProperty Name="Q_67Ans" ColumnName="Q_67Ans" />
+          <ScalarProperty Name="Q_66Ans" ColumnName="Q_66Ans" />
+          <ScalarProperty Name="Q_65Ans" ColumnName="Q_65Ans" />
+          <ScalarProperty Name="Q_64Ans" ColumnName="Q_64Ans" />
+          <ScalarProperty Name="Q_63Ans" ColumnName="Q_63Ans" />
+          <ScalarProperty Name="Q_62Ans" ColumnName="Q_62Ans" />
+          <ScalarProperty Name="Q_61Ans" ColumnName="Q_61Ans" />
+          <ScalarProperty Name="Q_60Ans" ColumnName="Q_60Ans" />
+          <ScalarProperty Name="Q_59Ans" ColumnName="Q_59Ans" />
+          <ScalarProperty Name="Q_58Ans" ColumnName="Q_58Ans" />
+          <ScalarProperty Name="Q_57Ans" ColumnName="Q_57Ans" />
+          <ScalarProperty Name="Q_56Ans" ColumnName="Q_56Ans" />
+          <ScalarProperty Name="Q_55Ans" ColumnName="Q_55Ans" />
+          <ScalarProperty Name="Q_54Ans" ColumnName="Q_54Ans" />
+          <ScalarProperty Name="Q_53Ans" ColumnName="Q_53Ans" />
+          <ScalarProperty Name="Q_52Ans" ColumnName="Q_52Ans" />
+          <ScalarProperty Name="Q_51Ans" ColumnName="Q_51Ans" />
+          <ScalarProperty Name="Q_50Ans" ColumnName="Q_50Ans" />
+          <ScalarProperty Name="Q_49Ans" ColumnName="Q_49Ans" />
+          <ScalarProperty Name="Q_48Ans" ColumnName="Q_48Ans" />
+          <ScalarProperty Name="Q_47Ans" ColumnName="Q_47Ans" />
+          <ScalarProperty Name="Q_46Ans" ColumnName="Q_46Ans" />
+          <ScalarProperty Name="Q_45Ans" ColumnName="Q_45Ans" />
+          <ScalarProperty Name="Q_44Ans" ColumnName="Q_44Ans" />
+          <ScalarProperty Name="Q_43Ans" ColumnName="Q_43Ans" />
+          <ScalarProperty Name="Q_42Ans" ColumnName="Q_42Ans" />
+          <ScalarProperty Name="Q_41Ans" ColumnName="Q_41Ans" />
+          <ScalarProperty Name="Q_40Ans" ColumnName="Q_40Ans" />
+          <ScalarProperty Name="Q_39Ans" ColumnName="Q_39Ans" />
+          <ScalarProperty Name="Q_38Ans" ColumnName="Q_38Ans" />
+          <ScalarProperty Name="Q_37Ans" ColumnName="Q_37Ans" />
+          <ScalarProperty Name="Q_36Ans" ColumnName="Q_36Ans" />
+          <ScalarProperty Name="Q_35Ans" ColumnName="Q_35Ans" />
+          <ScalarProperty Name="Q_34Ans" ColumnName="Q_34Ans" />
+          <ScalarProperty Name="Q_33Ans" ColumnName="Q_33Ans" />
+          <ScalarProperty Name="Q_32Ans" ColumnName="Q_32Ans" />
+          <ScalarProperty Name="Q_31Ans" ColumnName="Q_31Ans" />
+          <ScalarProperty Name="Q_30Ans" ColumnName="Q_30Ans" />
+          <ScalarProperty Name="Q_29Ans" ColumnName="Q_29Ans" />
+          <ScalarProperty Name="Q_28Ans" ColumnName="Q_28Ans" />
+          <ScalarProperty Name="Q_27Ans" ColumnName="Q_27Ans" />
+          <ScalarProperty Name="Q_26Ans" ColumnName="Q_26Ans" />
+          <ScalarProperty Name="Q_25Ans" ColumnName="Q_25Ans" />
+          <ScalarProperty Name="Q_24Ans" ColumnName="Q_24Ans" />
+          <ScalarProperty Name="Q_23Ans" ColumnName="Q_23Ans" />
+          <ScalarProperty Name="Q_22Ans" ColumnName="Q_22Ans" />
+          <ScalarProperty Name="Q_21Ans" ColumnName="Q_21Ans" />
+          <ScalarProperty Name="Q_20Ans" ColumnName="Q_20Ans" />
+          <ScalarProperty Name="Q_19Ans" ColumnName="Q_19Ans" />
+          <ScalarProperty Name="Q_18Ans" ColumnName="Q_18Ans" />
+          <ScalarProperty Name="Q_17Ans" ColumnName="Q_17Ans" />
+          <ScalarProperty Name="Q_16Ans" ColumnName="Q_16Ans" />
+          <ScalarProperty Name="Q_15Ans" ColumnName="Q_15Ans" />
+          <ScalarProperty Name="Q_14Ans" ColumnName="Q_14Ans" />
+          <ScalarProperty Name="Q_13Ans" ColumnName="Q_13Ans" />
+          <ScalarProperty Name="Q_12Ans" ColumnName="Q_12Ans" />
+          <ScalarProperty Name="Q_11Ans" ColumnName="Q_11Ans" />
+          <ScalarProperty Name="Q_10Ans" ColumnName="Q_10Ans" />
+          <ScalarProperty Name="Q_9Ans" ColumnName="Q_9Ans" />
+          <ScalarProperty Name="Q_8Ans" ColumnName="Q_8Ans" />
+          <ScalarProperty Name="Q_7Ans" ColumnName="Q_7Ans" />
+          <ScalarProperty Name="Q_6Ans" ColumnName="Q_6Ans" />
+          <ScalarProperty Name="Q_5Ans" ColumnName="Q_5Ans" />
+          <ScalarProperty Name="Q_4Ans" ColumnName="Q_4Ans" />
+          <ScalarProperty Name="Q_3Ans" ColumnName="Q_3Ans" />
+          <ScalarProperty Name="Q_2Ans" ColumnName="Q_2Ans" />
+          <ScalarProperty Name="Q1_Ans" ColumnName="Q1_Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="index_no" ColumnName="index_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Decoded_Answer_Sheets_Sada">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Decoded_Answer_Sheets_Sada">
+        <MappingFragment StoreEntitySet="Tbl_Decoded_Answer_Sheets_Sada">
+          <ScalarProperty Name="Q8ANSWERTIME" ColumnName="Q8ANSWERTIME" />
+          <ScalarProperty Name="Q8ANS4" ColumnName="Q8ANS4" />
+          <ScalarProperty Name="Q8ANS3" ColumnName="Q8ANS3" />
+          <ScalarProperty Name="Q8ANS2" ColumnName="Q8ANS2" />
+          <ScalarProperty Name="Q8ANS1" ColumnName="Q8ANS1" />
+          <ScalarProperty Name="Q7ANSWERTIME" ColumnName="Q7ANSWERTIME" />
+          <ScalarProperty Name="Q7ANS8" ColumnName="Q7ANS8" />
+          <ScalarProperty Name="Q7ANS7" ColumnName="Q7ANS7" />
+          <ScalarProperty Name="Q7ANS6" ColumnName="Q7ANS6" />
+          <ScalarProperty Name="Q7ANS5" ColumnName="Q7ANS5" />
+          <ScalarProperty Name="Q7ANS4" ColumnName="Q7ANS4" />
+          <ScalarProperty Name="Q7ANS3" ColumnName="Q7ANS3" />
+          <ScalarProperty Name="Q7ANS2" ColumnName="Q7ANS2" />
+          <ScalarProperty Name="Q7ANS1" ColumnName="Q7ANS1" />
+          <ScalarProperty Name="Q6ANSWERTIME" ColumnName="Q6ANSWERTIME" />
+          <ScalarProperty Name="Q6ANS1" ColumnName="Q6ANS1" />
+          <ScalarProperty Name="Q5ANSWERTIME" ColumnName="Q5ANSWERTIME" />
+          <ScalarProperty Name="Q5ANS2" ColumnName="Q5ANS2" />
+          <ScalarProperty Name="Q5ANS1" ColumnName="Q5ANS1" />
+          <ScalarProperty Name="Q4ANSWERTIME" ColumnName="Q4ANSWERTIME" />
+          <ScalarProperty Name="Q4ANS10" ColumnName="Q4ANS10" />
+          <ScalarProperty Name="Q4ANS9" ColumnName="Q4ANS9" />
+          <ScalarProperty Name="Q4ANS8" ColumnName="Q4ANS8" />
+          <ScalarProperty Name="Q4ANS7" ColumnName="Q4ANS7" />
+          <ScalarProperty Name="Q4ANS6" ColumnName="Q4ANS6" />
+          <ScalarProperty Name="Q4ANS5" ColumnName="Q4ANS5" />
+          <ScalarProperty Name="Q4ANS4" ColumnName="Q4ANS4" />
+          <ScalarProperty Name="Q4ANS3" ColumnName="Q4ANS3" />
+          <ScalarProperty Name="Q4ANS2" ColumnName="Q4ANS2" />
+          <ScalarProperty Name="Q4ANS1" ColumnName="Q4ANS1" />
+          <ScalarProperty Name="Q3ANSWERTIME" ColumnName="Q3ANSWERTIME" />
+          <ScalarProperty Name="Q3ANS10" ColumnName="Q3ANS10" />
+          <ScalarProperty Name="Q3ANS9" ColumnName="Q3ANS9" />
+          <ScalarProperty Name="Q3ANS8" ColumnName="Q3ANS8" />
+          <ScalarProperty Name="Q3ANS7" ColumnName="Q3ANS7" />
+          <ScalarProperty Name="Q3ANS6" ColumnName="Q3ANS6" />
+          <ScalarProperty Name="Q3ANS5" ColumnName="Q3ANS5" />
+          <ScalarProperty Name="Q3ANS4" ColumnName="Q3ANS4" />
+          <ScalarProperty Name="Q3ANS3" ColumnName="Q3ANS3" />
+          <ScalarProperty Name="Q3ANS2" ColumnName="Q3ANS2" />
+          <ScalarProperty Name="Q3ANS1" ColumnName="Q3ANS1" />
+          <ScalarProperty Name="Q2ANSWERTIME" ColumnName="Q2ANSWERTIME" />
+          <ScalarProperty Name="Q2ANS10" ColumnName="Q2ANS10" />
+          <ScalarProperty Name="Q2ANS9" ColumnName="Q2ANS9" />
+          <ScalarProperty Name="Q2ANS8" ColumnName="Q2ANS8" />
+          <ScalarProperty Name="Q2ANS7" ColumnName="Q2ANS7" />
+          <ScalarProperty Name="Q2ANS6" ColumnName="Q2ANS6" />
+          <ScalarProperty Name="Q2ANS5" ColumnName="Q2ANS5" />
+          <ScalarProperty Name="Q2ANS4" ColumnName="Q2ANS4" />
+          <ScalarProperty Name="Q2ANS3" ColumnName="Q2ANS3" />
+          <ScalarProperty Name="Q2ANS2" ColumnName="Q2ANS2" />
+          <ScalarProperty Name="Q2ANS1" ColumnName="Q2ANS1" />
+          <ScalarProperty Name="Q1ANSWERTIME" ColumnName="Q1ANSWERTIME" />
+          <ScalarProperty Name="Q1ANS10" ColumnName="Q1ANS10" />
+          <ScalarProperty Name="Q1ANS9" ColumnName="Q1ANS9" />
+          <ScalarProperty Name="Q1ANS8" ColumnName="Q1ANS8" />
+          <ScalarProperty Name="Q1ANS7" ColumnName="Q1ANS7" />
+          <ScalarProperty Name="Q1ANS6" ColumnName="Q1ANS6" />
+          <ScalarProperty Name="Q1ANS5" ColumnName="Q1ANS5" />
+          <ScalarProperty Name="Q1ANS4" ColumnName="Q1ANS4" />
+          <ScalarProperty Name="Q1ANS3" ColumnName="Q1ANS3" />
+          <ScalarProperty Name="Q1ANS2" ColumnName="Q1ANS2" />
+          <ScalarProperty Name="Q1ANS1" ColumnName="Q1ANS1" />
+          <ScalarProperty Name="Exam_Time" ColumnName="Exam_Time" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="Login_Status" ColumnName="Login_Status" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Admin_Login">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Admin_Login">
+        <MappingFragment StoreEntitySet="Tbl_Admin_Login">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_File_Upload_Details">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_File_Upload_Details">
+        <MappingFragment StoreEntitySet="Tbl_File_Upload_Details">
+          <ScalarProperty Name="Text_Ans_File" ColumnName="Text_Ans_File" />
+          <ScalarProperty Name="Total_Absent_Student" ColumnName="Total_Absent_Student" />
+          <ScalarProperty Name="Total_Present_Student" ColumnName="Total_Present_Student" />
+          <ScalarProperty Name="Total_Students" ColumnName="Total_Students" />
+          <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+          <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+          <ScalarProperty Name="Teacher_Name" ColumnName="Teacher_Name" />
+          <ScalarProperty Name="date_Time" ColumnName="date_Time" />
+          <ScalarProperty Name="IP_ADDRESS" ColumnName="IP_ADDRESS" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="File_Upload_Reason">
+      <EntityTypeMapping TypeName="GKJ_2022Model.File_Upload_Reason">
+        <MappingFragment StoreEntitySet="File_Upload_Reason">
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="File_Status" ColumnName="File_Status" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Final_Ans_BK">
+      <EntityTypeMapping TypeName="GKJ_2022Model.Tbl_Final_Ans_BK">
+        <MappingFragment StoreEntitySet="Tbl_Final_Ans_BK">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Q_100Ans" ColumnName="Q_100Ans" />
+          <ScalarProperty Name="Q_99Ans" ColumnName="Q_99Ans" />
+          <ScalarProperty Name="Q_98Ans" ColumnName="Q_98Ans" />
+          <ScalarProperty Name="Q_97Ans" ColumnName="Q_97Ans" />
+          <ScalarProperty Name="Q_96Ans" ColumnName="Q_96Ans" />
+          <ScalarProperty Name="Q_95Ans" ColumnName="Q_95Ans" />
+          <ScalarProperty Name="Q_94Ans" ColumnName="Q_94Ans" />
+          <ScalarProperty Name="Q_93Ans" ColumnName="Q_93Ans" />
+          <ScalarProperty Name="Q_92Ans" ColumnName="Q_92Ans" />
+          <ScalarProperty Name="Q_91Ans" ColumnName="Q_91Ans" />
+          <ScalarProperty Name="Q_90Ans" ColumnName="Q_90Ans" />
+          <ScalarProperty Name="Q_89Ans" ColumnName="Q_89Ans" />
+          <ScalarProperty Name="Q_88Ans" ColumnName="Q_88Ans" />
+          <ScalarProperty Name="Q_87Ans" ColumnName="Q_87Ans" />
+          <ScalarProperty Name="Q_86Ans" ColumnName="Q_86Ans" />
+          <ScalarProperty Name="Q_85Ans" ColumnName="Q_85Ans" />
+          <ScalarProperty Name="Q_84Ans" ColumnName="Q_84Ans" />
+          <ScalarProperty Name="Q_83Ans" ColumnName="Q_83Ans" />
+          <ScalarProperty Name="Q_82Ans" ColumnName="Q_82Ans" />
+          <ScalarProperty Name="Q_81Ans" ColumnName="Q_81Ans" />
+          <ScalarProperty Name="Q_80Ans" ColumnName="Q_80Ans" />
+          <ScalarProperty Name="Q_79Ans" ColumnName="Q_79Ans" />
+          <ScalarProperty Name="Q_78Ans" ColumnName="Q_78Ans" />
+          <ScalarProperty Name="Q_77Ans" ColumnName="Q_77Ans" />
+          <ScalarProperty Name="Q_76Ans" ColumnName="Q_76Ans" />
+          <ScalarProperty Name="Q_75Ans" ColumnName="Q_75Ans" />
+          <ScalarProperty Name="Q_74Ans" ColumnName="Q_74Ans" />
+          <ScalarProperty Name="Q_73Ans" ColumnName="Q_73Ans" />
+          <ScalarProperty Name="Q_72Ans" ColumnName="Q_72Ans" />
+          <ScalarProperty Name="Q_71Ans" ColumnName="Q_71Ans" />
+          <ScalarProperty Name="Q_70Ans" ColumnName="Q_70Ans" />
+          <ScalarProperty Name="Q_69Ans" ColumnName="Q_69Ans" />
+          <ScalarProperty Name="Q_68Ans" ColumnName="Q_68Ans" />
+          <ScalarProperty Name="Q_67Ans" ColumnName="Q_67Ans" />
+          <ScalarProperty Name="Q_66Ans" ColumnName="Q_66Ans" />
+          <ScalarProperty Name="Q_65Ans" ColumnName="Q_65Ans" />
+          <ScalarProperty Name="Q_64Ans" ColumnName="Q_64Ans" />
+          <ScalarProperty Name="Q_63Ans" ColumnName="Q_63Ans" />
+          <ScalarProperty Name="Q_62Ans" ColumnName="Q_62Ans" />
+          <ScalarProperty Name="Q_61Ans" ColumnName="Q_61Ans" />
+          <ScalarProperty Name="Q_60Ans" ColumnName="Q_60Ans" />
+          <ScalarProperty Name="Q_59Ans" ColumnName="Q_59Ans" />
+          <ScalarProperty Name="Q_58Ans" ColumnName="Q_58Ans" />
+          <ScalarProperty Name="Q_57Ans" ColumnName="Q_57Ans" />
+          <ScalarProperty Name="Q_56Ans" ColumnName="Q_56Ans" />
+          <ScalarProperty Name="Q_55Ans" ColumnName="Q_55Ans" />
+          <ScalarProperty Name="Q_54Ans" ColumnName="Q_54Ans" />
+          <ScalarProperty Name="Q_53Ans" ColumnName="Q_53Ans" />
+          <ScalarProperty Name="Q_52Ans" ColumnName="Q_52Ans" />
+          <ScalarProperty Name="Q_51Ans" ColumnName="Q_51Ans" />
+          <ScalarProperty Name="Q_50Ans" ColumnName="Q_50Ans" />
+          <ScalarProperty Name="Q_49Ans" ColumnName="Q_49Ans" />
+          <ScalarProperty Name="Q_48Ans" ColumnName="Q_48Ans" />
+          <ScalarProperty Name="Q_47Ans" ColumnName="Q_47Ans" />
+          <ScalarProperty Name="Q_46Ans" ColumnName="Q_46Ans" />
+          <ScalarProperty Name="Q_45Ans" ColumnName="Q_45Ans" />
+          <ScalarProperty Name="Q_44Ans" ColumnName="Q_44Ans" />
+          <ScalarProperty Name="Q_43Ans" ColumnName="Q_43Ans" />
+          <ScalarProperty Name="Q_42Ans" ColumnName="Q_42Ans" />
+          <ScalarProperty Name="Q_41Ans" ColumnName="Q_41Ans" />
+          <ScalarProperty Name="Q_40Ans" ColumnName="Q_40Ans" />
+          <ScalarProperty Name="Q_39Ans" ColumnName="Q_39Ans" />
+          <ScalarProperty Name="Q_38Ans" ColumnName="Q_38Ans" />
+          <ScalarProperty Name="Q_37Ans" ColumnName="Q_37Ans" />
+          <ScalarProperty Name="Q_36Ans" ColumnName="Q_36Ans" />
+          <ScalarProperty Name="Q_35Ans" ColumnName="Q_35Ans" />
+          <ScalarProperty Name="Q_34Ans" ColumnName="Q_34Ans" />
+          <ScalarProperty Name="Q_33Ans" ColumnName="Q_33Ans" />
+          <ScalarProperty Name="Q_32Ans" ColumnName="Q_32Ans" />
+          <ScalarProperty Name="Q_31Ans" ColumnName="Q_31Ans" />
+          <ScalarProperty Name="Q_30Ans" ColumnName="Q_30Ans" />
+          <ScalarProperty Name="Q_29Ans" ColumnName="Q_29Ans" />
+          <ScalarProperty Name="Q_28Ans" ColumnName="Q_28Ans" />
+          <ScalarProperty Name="Q_27Ans" ColumnName="Q_27Ans" />
+          <ScalarProperty Name="Q_26Ans" ColumnName="Q_26Ans" />
+          <ScalarProperty Name="Q_25Ans" ColumnName="Q_25Ans" />
+          <ScalarProperty Name="Q_24Ans" ColumnName="Q_24Ans" />
+          <ScalarProperty Name="Q_23Ans" ColumnName="Q_23Ans" />
+          <ScalarProperty Name="Q_22Ans" ColumnName="Q_22Ans" />
+          <ScalarProperty Name="Q_21Ans" ColumnName="Q_21Ans" />
+          <ScalarProperty Name="Q_20Ans" ColumnName="Q_20Ans" />
+          <ScalarProperty Name="Q_19Ans" ColumnName="Q_19Ans" />
+          <ScalarProperty Name="Q_18Ans" ColumnName="Q_18Ans" />
+          <ScalarProperty Name="Q_17Ans" ColumnName="Q_17Ans" />
+          <ScalarProperty Name="Q_16Ans" ColumnName="Q_16Ans" />
+          <ScalarProperty Name="Q_15Ans" ColumnName="Q_15Ans" />
+          <ScalarProperty Name="Q_14Ans" ColumnName="Q_14Ans" />
+          <ScalarProperty Name="Q_13Ans" ColumnName="Q_13Ans" />
+          <ScalarProperty Name="Q_12Ans" ColumnName="Q_12Ans" />
+          <ScalarProperty Name="Q_11Ans" ColumnName="Q_11Ans" />
+          <ScalarProperty Name="Q_10Ans" ColumnName="Q_10Ans" />
+          <ScalarProperty Name="Q_9Ans" ColumnName="Q_9Ans" />
+          <ScalarProperty Name="Q_8Ans" ColumnName="Q_8Ans" />
+          <ScalarProperty Name="Q_7Ans" ColumnName="Q_7Ans" />
+          <ScalarProperty Name="Q_6Ans" ColumnName="Q_6Ans" />
+          <ScalarProperty Name="Q_5Ans" ColumnName="Q_5Ans" />
+          <ScalarProperty Name="Q_4Ans" ColumnName="Q_4Ans" />
+          <ScalarProperty Name="Q_3Ans" ColumnName="Q_3Ans" />
+          <ScalarProperty Name="Q_2Ans" ColumnName="Q_2Ans" />
+          <ScalarProperty Name="Q1_Ans" ColumnName="Q1_Ans" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

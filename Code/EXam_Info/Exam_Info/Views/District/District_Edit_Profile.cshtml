@@ -1,0 +1,321 @@
+﻿@model Exam_Info.Models.Tbl_District_Co_Ordinator_Registration
+@{
+    ViewBag.Title = "District_Edit_Profile";
+    Layout = "~/Views/Shared/District_LayoutPage.cshtml";
+
+    List<SelectListItem> District_List = new List<SelectListItem>();
+    District_List.Add(new SelectListItem { Text = "Pune", Value = "11" });
+    District_List.Add(new SelectListItem { Text = "AHAMADNAGAR", Value = "12", });
+    District_List.Add(new SelectListItem { Text = "SOLAPUR", Value = "24" });
+    District_List.Add(new SelectListItem { Text = "BHANDARA", Value = "03" });
+    District_List.Add(new SelectListItem { Text = "CHANDRAPUR", Value = "05" });
+    District_List.Add(new SelectListItem { Text = "NAGPUR", Value = "06" });
+    District_List.Add(new SelectListItem { Text = "WARDHA", Value = "07" });
+    District_List.Add(new SelectListItem { Text = "GADCHIROLI", Value = "09" });
+    District_List.Add(new SelectListItem { Text = "GONDIA", Value = "29" });
+    District_List.Add(new SelectListItem { Text = "AURANGABAD", Value = "56" });
+    District_List.Add(new SelectListItem { Text = "BEED", Value = "57" });
+    District_List.Add(new SelectListItem { Text = "PARBHANI", Value = "60", });
+    District_List.Add(new SelectListItem { Text = "JALNA", Value = "61" });
+    District_List.Add(new SelectListItem { Text = "HINGOLI", Value = "66" });
+    District_List.Add(new SelectListItem { Text = "THANE", Value = "16" });
+    District_List.Add(new SelectListItem { Text = "PALGHAR", Value = "18" });
+    District_List.Add(new SelectListItem { Text = "RAIGAD", Value = "17" });
+    District_List.Add(new SelectListItem { Text = "GR. MUMBAI", Value = "31" });
+    District_List.Add(new SelectListItem { Text = "MUMBAI(SUB1)", Value = "32" });
+    District_List.Add(new SelectListItem { Text = "MUMBAI(SUB2)", Value = "33" });
+    District_List.Add(new SelectListItem { Text = "SATARA", Value = "21", });
+    District_List.Add(new SelectListItem { Text = "SANGALI", Value = "22" });
+    District_List.Add(new SelectListItem { Text = "KOLHAPUR", Value = "23" });
+    District_List.Add(new SelectListItem { Text = "WASHIM", Value = "10" });
+    District_List.Add(new SelectListItem { Text = "AKOLA", Value = "01" });
+    District_List.Add(new SelectListItem { Text = "RATANAGIRI", Value = "25" });
+    District_List.Add(new SelectListItem { Text = "AMRAVATI", Value = "02" });
+    District_List.Add(new SelectListItem { Text = "BULDHANA", Value = "04" });
+    District_List.Add(new SelectListItem { Text = "YEOTMAL", Value = "08" });
+    District_List.Add(new SelectListItem { Text = "NASIK", Value = "13" });
+    District_List.Add(new SelectListItem { Text = "DHULE", Value = "14" });
+    District_List.Add(new SelectListItem { Text = "JALGAON", Value = "15" });
+    District_List.Add(new SelectListItem { Text = "NANDED", Value = "58" });
+    District_List.Add(new SelectListItem { Text = "LATUR", Value = "62" });
+    District_List.Add(new SelectListItem { Text = "OSMANABAD", Value = "59" });
+    District_List.Add(new SelectListItem { Text = "SINDHUDURG", Value = "26" });
+}
+
+
+@if (TempData["Msg"] != null)
+{
+    <h5 style="color:red">@TempData["Msg"].ToString()</h5>
+}
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ID)
+    <div class="auth-form-transparent text-left p-3">
+        <br />
+        <div class="form-group">
+            <center> <h2>District Co-Ordinator Edit Profile</h2></center>   <br />
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="Index No">Index No</label><span style="color:Red">*</span>
+                    @Html.TextBoxFor(model => model.Index_No, new { @class = "form-control", @placeholder = "Index No", @name = "Index_No", @required = "required", maxLength = 7 })
+                    @Html.ValidationMessageFor(model => model.Index_No, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-sm-4">
+                    <label for="College Name">College Name</label><span style="color:Red">*</span>
+                    @Html.TextBoxFor(model => model.College_Name, new { @class = "form-control", @placeholder = "College Name", @name = "College_Name", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.College_Name, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-4">
+                    <label for="College Addres">College Address</label><span style="color:Red">*</span>
+                    @Html.TextBoxFor(model => model.College_Address, new { @class = "form-control", @placeholder = "College Address", @name = "College_Address", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.College_Address, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="Coordinator Name">Co-ordinator Name</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Coordinator_Name, new { @class = "form-control", @placeholder = "Co-ordinator Name", @name = "Co-ordinator_Name ", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Coordinator_Name, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-sm-4">
+                <label for="Coordinator Mobile">Co-ordinator Mobile</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Coordinator_Mobile, new { @class = "form-control", @placeholder = "Co-ordinator Mobile", @name = "Co-ordinator_Mobile ", maxLength = 10, @required = "required" })
+                @Html.ValidationMessageFor(model => model.Coordinator_Mobile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="Coordinator Email">Co-ordinator Email</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Coordinator_Email, new { @class = "form-control", @placeholder = "Co-ordinator Email", @name = "Co-ordinator_Email " })
+                @Html.ValidationMessageFor(model => model.Coordinator_Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-4">
+                <label for="Coordinator Eduction">Co-ordinator Eduction</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Coordinator_Eduction, new { @class = "form-control", @placeholder = "Co-Ordinator Education", @name = "Co-Ordinator_Education " })
+                @Html.ValidationMessageFor(model => model.Coordinator_Eduction, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="District_List">Select District</label><span style="color:Red">*</span>
+                @*@Html.TextBoxFor(model => model.District_Code, new { @class = "form-control", @placeholder = "District", @name = "IT_Teacher_Name " })*@
+
+                @Html.DropDownListFor(model => model.District_Code, District_List, "--Select District--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.District_Code, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-sm-4">
+                <label for="Taluka_Code">Select Taluka</label><span style="color:Red">*</span>
+                @Html.DropDownListFor(model => model.Taluka_Code, new SelectList(string.Empty, "Value", "Text"), "--Select Taluka--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Taluka_Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="Password">Password</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password", @name = "Password ", @type = "Password" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-sm-4">
+                <label for="Confirm_Password">Confirm Password</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Confirm_Password, new { @class = "form-control", @placeholder = "Confirm Password", @name = "Confirm_Password" })
+                @Html.ValidationMessageFor(model => model.Confirm_Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+    </div>
+    <br />
+    <div class="row" style="text-align:left">
+        <h5><label>IT College List :</label></h5>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <label for="Select College ">Select College</label><span style="color:Red">*</span>
+            <table id="college_list">
+                <tr></tr>
+            </table>
+        </div>
+    </div>
+    <br />
+    <center>
+        <input type="submit" value="Update" id="btn_sub" class="btn btn-success" />
+    </center>
+}
+
+<script>
+
+$(document).ready(function () {
+
+    loadTaluka();
+    $("#District_Code").change(function () {
+        $("#Taluka_Code").empty();
+        $.ajax({
+            type: 'POST',
+            url: '../District/Get_Taluka',
+            dataType: 'json',
+            data: {
+                distCode: $("#District_Code").val()
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#Taluka_Code").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+        return false;
+    });
+
+
+    function loadTaluka() {
+        $("#Taluka_Code").empty();
+        $.ajax({
+            type: 'POST',
+            url: '../District/Get_Taluka',
+            dataType: 'json',
+            data: {
+                distCode: $("#District_Code").val()
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#Taluka_Code").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+
+                var Model = @Html.Raw(Json.Encode(Model));
+                var taluka_list = Model['Taluka_Code'];
+
+                $('#Taluka_Code').val(taluka_list);
+
+                loadCollege();
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+
+    };
+
+    $("#Taluka_Code").change(function () {
+        debugger
+
+        $.ajax({
+            type: 'POST',
+            url: '../District/Show_College',
+            dataType: 'json',
+            data: {
+                district: $("#District_Code").val(),
+                taluka: $("#Taluka_Code").val(),
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (object) {
+                var tdcount = 0;
+                var totcount = 0;
+                var rows = "";
+                var htmlrow = "";
+                $('#college_list').empty();
+                $.each(object.Response, function (key, value) {
+                    rows += "<td >" + '<input id = "College_Code1"  name = "College_Code1" value= ' + value.Index_No + '  type="checkbox">' + value.Index_No + "</td>";
+                    tdcount++;
+                    totcount++;
+                    if (tdcount == 1) {
+                        htmlrow = "<tr>" + rows + "</tr>";
+                        $('#college_list').append(htmlrow);
+                        tdcount = 0;
+                        rows = "";
+                    }
+                    if (totcount == object.Response.length) {
+                        htmlrow = "<tr>" + rows + "</tr>";
+                        $('#college_list').append(htmlrow);
+                    }
+                });
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    });
+
+    function loadCollege() {
+
+
+        $.ajax({
+            type: 'POST',
+            url: '../District/Show_College',
+            dataType: 'json',
+            data: {
+                district: $("#District_Code").val(),
+                taluka: $("#Taluka_Code").val(),
+            },
+            success: function (objc) {
+                debugger
+                console.log(objc);
+                var tdcount = 0;
+                var totcount = 0;
+                var rows = "";
+                var htmlrow = "";
+                $.each(objc.Response, function (key, value) {
+                    rows += "<td>" + '<input id = "College_Code1" name = "College_Code1"  value= ' + value.Index_No + '  type="checkbox">' + value.Index_No + "</td>";
+                    tdcount++;
+                    totcount++;
+                    if (tdcount == 2) {
+                        htmlrow = "<tr>" + rows + "</tr>";
+                        $('#college_list').append(htmlrow);
+                        tdcount = 0;
+                        rows = "";
+                    }
+                    debugger
+                    if (totcount == objc.Response.length) {
+                        htmlrow = "<tr>" + rows + "</tr>";
+                        $('#college_list').append(htmlrow);
+                    }
+
+                    debugger
+                    var Model = @Html.Raw(Json.Encode(Model));
+                    var college_list = Model['College_Code'].split(",");
+                    console.log(college_list);
+                    $.each(college_list, function (i, val) {
+                        $('#college_list input[value="' + val + '"]').attr("checked", true);
+
+                    })
+                });
+
+            },
+
+        });
+        error: function load(ex) {
+            alert('Failed.' + ex);
+        }
+    };
+
+
+});
+
+$("#dashboard").submit(function (e) {
+    e.preventDefault();
+});
+</script>

@@ -1,0 +1,644 @@
+﻿@model IPagedList<Exam_Info.Models.Ans_Model>
+
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Check_Mark_Status";
+    Layout = "~/Views/Shared/Division_LayoutPage.cshtml";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #dist {
+        width: 526px;
+        padding: 8px;
+    }
+
+    #taluka {
+        width: 526px;
+        padding: 8px;
+    }
+
+    #btn_Excel {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Check Mark Status</h2>
+    </div>
+    <div class="col-sm-6">
+        <input type="button" class="btn btn-success" id="btn_Excel" value="Download Excel"><br />
+    </div>
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+@using (Html.BeginForm("Check_Mark_Status", "Division", FormMethod.Get))
+{
+<div>
+    @Html.Hidden("Div_Code", @TempData["Division_Code"])
+    <div class="row">
+
+        <div class="col-sm-4">
+            <label for="Division_List">Select District</label><span style="color:Red">*</span>
+            <select name="dist" id="dist">
+            </select>
+        </div>
+
+        <div class="col-sm-4">
+            <label for="Taluka_Code">Select Taluka</label><span style="color:Red">*</span>
+            <select name="taluka" id="taluka">
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <label for="Division_List">Seat No</label><span style="color:Red">*</span>
+            <input type="text" name="seat" id="seat" maxlength="7">
+        </div>
+
+        <div class="col-sm-1">
+            <center>
+                <label></label><br />
+                <input type="submit" value="Submit" id="btn_sub" class="btn btn-success" />
+            </center>
+        </div>
+    </div>
+
+    <br />
+    <div align="center" style="overflow: scroll; height:1000px;" class="col-md-12">
+        @if (Model != null)
+        {
+            <center>
+                <table class="AppFormTable " id="state_insp" style="background-color: #e7fafe;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Sr.No.
+                            </th>
+                            <th>
+                                Index No
+                            </th>
+                            <th>
+                                Seat No
+                            </th>
+                            <th>
+                                Batch
+                            </th>
+                            <th>
+                                Q1Ans1
+                            </th>
+                            <th>
+                                Q1Ans2
+                            </th>
+                            <th>
+                                Q1Ans3
+                            </th>
+                            <th>
+                                Q1Ans4
+                            </th>
+                            <th>
+                                Q1Ans5
+                            </th>
+                            <th>
+                                Q1Ans6
+                            </th>
+                            <th>
+                                Q1Ans7
+                            </th>
+                            <th>
+                                Q1Ans8
+                            </th>
+                            <th>
+                                Q1Ans9
+                            </th>
+                            <th>
+                                Q1Ans10
+                            </th>
+
+                            <th>
+                                Q1Ans11
+                            </th>
+                            <th>
+                                Q1Ans12
+                            </th>
+                            <th>
+                                Q1Ans13
+                            </th>
+                            <th>
+                                Q1Ans14
+                            </th>
+                            <th>
+                                Q1Ans15
+                            </th>
+                            <th>
+                                Q1Ans16
+                            </th>
+                            <th>
+                                Q1Ans17
+                            </th>
+                            <th>
+                                Q1Ans18
+                            </th>
+                            <th>
+                                Q1Ans19
+                            </th>
+                            <th>
+                                Q1Ans20
+                            </th>
+                            <th>
+                                Q1Ans21
+                            </th>
+                            <th>
+                                Q1Ans22
+                            </th>
+                            <th>
+                                Q1Ans23
+                            </th>
+                            <th>
+                                Q1Ans24
+                            </th>
+                            <th>
+                                Q1Ans25
+                            </th>
+                            <th>
+                                Q1Ans26
+                            </th>
+                            <th>
+                                Q1Ans27
+                            </th>
+                            <th>
+                                Q1Ans28
+                            </th>
+                            <th>
+                                Q1Ans29
+                            </th>
+                            <th>
+                                Q1Ans30
+                            </th>
+                            <th>
+                                Q1Ans31
+                            </th>
+                            <th>
+                                Q1Ans32
+                            </th>
+                            <th>
+                                Q1Ans33
+                            </th>
+                            <th>
+                                Q1Ans34
+                            </th>
+                            <th>
+                                Q1Ans35
+                            </th>
+                            <th>
+                                Q1Ans36
+                            </th>
+                            <th>
+                                Q1Ans37
+                            </th>
+                            <th>
+                                Q1Ans38
+                            </th>
+                            <th>
+                                Q1Ans39
+                            </th>
+                            <th>
+                                Q1Ans40
+                            </th>
+                            <th>
+                                Q1Ans41
+                            </th>
+                            <th>
+                                Q1Ans42
+                            </th>
+                            <th>
+                                Q1Ans43
+                            </th>
+                            <th>
+                                Q1Ans44
+                            </th>
+                            <th>
+                                Q1Ans45
+                            </th>
+                            <th>
+                                Q1Ans46
+                            </th>
+                            <th>
+                                Q1Ans47
+                            </th>
+                            <th>
+                                Q1Ans48
+                            </th>
+                            <th>
+                                Q1Ans49
+                            </th>
+                            <th>
+                                Q1Ans50
+                            </th>
+                            <th>
+                                Q1Ans51
+                            </th>
+                            <th>
+                                Q1Ans52
+                            </th>
+                            <th>
+                                Q1Ans53
+                            </th>
+                            <th>
+                                Q1Ans54
+                            </th>
+                            <th>
+                                Q1Ans55
+                            </th>
+                            <th>
+                                Q1Ans56
+                            </th>
+                            <th>
+                                Q1Ans57
+                            </th>
+                            <th>
+                                Q1Ans58
+                            </th>
+                            <th>
+                                Q1Ans59
+                            </th>
+                            <th>
+                                Q1Ans60
+                            </th>
+
+                            <th>
+                                Q1Ans61
+                            </th>
+                            <th>
+                                Q1Ans62
+                            </th>
+                            <th>
+                                Q1Ans63
+                            </th>
+                            <th>
+                                Q1Ans64
+                            </th>
+                            <th>
+                                Q1Ans65
+                            </th>
+                            <th>
+                                Q1Ans66
+                            </th>
+                            <th>
+                                Q1Ans67
+                            </th>
+                            <th>
+                                Q1Ans68
+                            </th>
+                            <th>
+                                Q1Ans69
+                            </th>
+                            <th>
+                                Q1Ans70
+                            </th>
+
+                            <th>
+                                Q1Ans71
+                            </th>
+                            <th>
+                                Q1Ans72
+                            </th>
+                            <th>
+                                Q1Ans73
+                            </th>
+                            <th>
+                                Q1Ans74
+                            </th>
+                            <th>
+                                Q1Ans75
+                            </th>
+                            <th>
+                                Q1Ans76
+                            </th>
+                            <th>
+                                Q1Ans77
+                            </th>
+                            <th>
+                                Q1Ans78
+                            </th>
+                            <th>
+                                Q1Ans79
+                            </th>
+                            <th>
+                                Q1Ans80
+                            </th>
+
+                            <th>
+                                Q1Ans81
+                            </th>
+                            <th>
+                                Q1Ans82
+                            </th>
+                            <th>
+                                Q1Ans83
+                            </th>
+                            <th>
+                                Q1Ans84
+                            </th>
+                            <th>
+                                Q1Ans85
+                            </th>
+                            <th>
+                                Q1Ans86
+                            </th>
+                            <th>
+                                Q1Ans87
+                            </th>
+                            <th>
+                                Q1Ans88
+                            </th>
+                            <th>
+                                Q1Ans89
+                            </th>
+                            <th>
+                                Q1Ans90
+                            </th>
+
+                            <th>
+                                Q1Ans91
+                            </th>
+                            <th>
+                                Q1Ans92
+                            </th>
+                            <th>
+                                Q1Ans93
+                            </th>
+                            <th>
+                                Q1Ans94
+                            </th>
+                            <th>
+                                Q1Ans95
+                            </th>
+                            <th>
+                                Q1Ans96
+                            </th>
+                            <th>
+                                Q1Ans97
+                            </th>
+                            <th>
+                                Q1Ans98
+                            </th>
+                            <th>
+                                Q1Ans99
+                            </th>
+                            <th>
+                                Q1Ans100
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 1;}
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@i</span>
+                                    @{i++;}
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Index_No)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Seat_No)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Batch)
+                                </td>
+                                <td> @Html.DisplayFor(model => item.Q1_Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_2Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_3Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_4Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_5Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_6Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_7Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_8Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_9Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_10Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_11Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_12Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_13Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_14Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_15Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_16Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_17Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_18Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_19Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_20Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_21Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_22Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_23Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_24Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_25Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_26Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_27Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_28Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_29Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_30Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_31Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_32Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_33Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_34Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_35Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_36Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_37Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_38Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_39Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_40Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_41Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_42Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_43Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_44Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_45Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_46Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_47Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_48Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_49Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_50Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_51Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_52Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_53Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_54Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_55Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_56Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_57Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_58Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_59Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_60Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_61Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_62Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_63Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_64Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_65Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_66Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_67Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_68Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_69Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_70Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_71Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_72Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_73Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_74Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_75Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_76Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_77Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_78Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_79Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_80Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_81Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_82Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_83Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_84Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_85Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_86Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_87Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_88Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_89Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_90Ans) </td>
+
+                                <td> @Html.DisplayFor(model => item.Q_91Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_92Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_93Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_94Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_95Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_96Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_97Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_98Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_99Ans) </td>
+                                <td> @Html.DisplayFor(model => item.Q_100Ans) </td>
+
+
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </center>
+        }
+        <br />
+        </div>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Check_Mark_Status", new { page, dist = Request.QueryString["dist"], taluka = Request.QueryString["taluka"], seat = Request.QueryString["seat"] }))
+
+
+    }
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#taluka").empty();
+            $("#dist").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '../Division/Get_District',
+                dataType: 'json',
+                data: {
+                    divCode: $("#Div_Code").val()
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#dist").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+
+            $("#dist").change(function () {
+
+                $.ajax({
+                    type: 'POST',
+                    url: '../Division/Load_Taluka',
+                    dataType: 'json',
+                    data: {
+                        distCode: $("#dist").val()
+                    },
+                    success: function (Data) {
+                        $("#taluka").empty();
+                        for (var item in Data) {
+                            $("#taluka").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                        }
+
+                    },
+                    error: function (ex) {
+                        alert('Failed.' + ex);
+                    }
+                });
+            });
+
+
+            $("#btn_Excel").click(function () {
+
+                Get_Inspection_Record("1");
+
+            });
+
+
+            function Get_Inspection_Record(Excel) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: '../Division/Check_Mark_Status',
+                    dataType: 'json',
+                    data: {
+                        dist: $("#dist").val(),
+                        taluka: $("#taluka").val(),
+                        Excel: Excel
+                    },
+                    beforeSend: function () {
+                        Showloader();
+                    },
+                    complete: function () {
+                        Hideloader();
+                    },
+                    success: function (data) {
+
+                        if (data.Result) {
+
+                            if (Excel == "1") {
+
+                                window.location.href = "../State/" + data.FileName + ".xlsx";
+
+                            }
+                        }
+                        else {
+                            Error_Alert(data.Response);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed.' + ex);
+                    }
+                });
+            }
+
+
+        });
+    </script>

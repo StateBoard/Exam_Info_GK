@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "District_DashBoard";
+    Layout = "~/Views/Shared/District_LayoutPage.cshtml";
+
+}
+<h2 style="text-align:center">District DashBoard</h2>
+
+<div class="row">
+    <table id="distdash"></table>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: 'POST',
+            url: '../Admin/District_Dash_Details',
+            dataType: 'json',
+            data: {
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (data) {
+
+                var temp = "";
+
+                if (data.Result) {
+                    $("#distdash").empty();
+                    $.each(data.Response, function (i, data) {
+                        debugger
+                        temp += `<tr><td> <h4><a class="blink" style="color:red" href="~/Attachments/` + data.Id + `.jpg">` + (i + 1) + `) ` + data.Heading + `</a></h4></td></tr>`;
+                    });
+                    temp += `</tbody>`;
+                    $("#distdash").append(temp);
+                }
+                else {
+                    Error_Alert(data.Response);
+                }
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    });
+
+</script>
+

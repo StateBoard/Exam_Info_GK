@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Exam_Info.Models.Tbl_DTT1>
+@{
+    ViewBag.Title = "Data_Test1";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+}
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    #btn_submit {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Data Test1</h2>
+    </div>
+    <div class="col-sm-6">
+        <button class="btn btn-success" id="btn_submit" onclick="return confirm('Do you want to download ?')">@Html.ActionLink("Download Excel", "College_DTT1", "College", new { controller = "College" })</button><br />
+    </div>
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<div class="table-responsive pt-3  ">
+    <center>
+        <table class="AppFormTable " style="background-color: #e7fafe;">
+            <tr>
+                <th>
+                    Sr. No
+                </th>
+                <th>
+                    Index No
+                </th>
+                <th>
+                    Index NoN
+                </th>
+                <th>
+                    System No
+                </th>
+                <th>
+                    MAC
+                </th>
+                <th>
+                    Screen_Res
+                </th>
+                <th>
+                    Screen Res Change
+                </th>
+                <th>
+                    Read/Write Access
+                </th>
+                <th>
+                    Processor
+                </th>
+                <th>
+                    Active
+                </th>
+
+            </tr>
+            @{int i = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <span>@i</span>
+                        @{i++;}
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Index_No)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Index_NoN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.SYS_No)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.MAC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Screen_Res)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Screen_Res_Change)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Read_Wrtite_Access)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Processor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Active)
+                    </td>
+                </tr>
+            }
+        </table>
+    </center>
+   
+</div>
+
+

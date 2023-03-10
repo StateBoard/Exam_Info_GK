@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "District_College_List";
+    Layout = "~/Views/Shared/District_LayoutPage.cshtml";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #District {
+        width: 526px;
+        padding: 5px;
+    }
+
+    #btn_Excel {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>District College List</h2>
+    </div>
+    <div class="col-sm-6">
+        <input type="button" class="btn btn-success" id="btn_Excel" value="Download Excel"><br />
+    </div>
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<div class="table-responsive pt-3  ">
+    <div class="row">
+        <div class="col-sm-2">
+            @Html.TextBox("district_name", TempData["District_Name"])
+        </div>
+
+        <div class="col-sm-2">
+            <label for="taluka_name">Select Taluka</label><span style="color:Red">*</span>
+            <select name="taluka_name" id="taluka_name">
+            </select>
+        </div>
+
+        <div class="col-sm-2">
+            <label for="Type">Select Type</label><span style="color:Red">*</span>
+            <select name="type" id="type">
+                <option value="0">--Select Type--</option>
+                <option value="Complete">Registration Complete</option>
+                <option value="InComplete">Registration InComplete</option>
+            </select>
+        </div>
+
+
+        <div class="col-sm-2">
+            <label></label><br />
+            <input type="button" value="Submit" id="btn_sub" class="btn btn-success" />
+        </div>
+    </div>
+    <br />
+    <center>
+        <table class="AppFormTable " id="state_insp" style="background-color: #e7fafe;">
+        </table>
+    </center>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+       
+        $("#taluka_name").empty();
+        $.ajax({
+            type: 'POST',
+            url: '../District/Load_District',
+            dataType: 'json',
+            data: {
+                distCode: $("#district_name").val()
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#taluka_name").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+
+        $("#btn_sub").click(function () {
+
+            Get_Inspection_Record("0");
+
+        });
+        $("#btn_Excel").click(function () {
+
+            Get_Inspection_Record("1");
+
+        });
+
+        function Get_Inspection_Record(Excel) {
+            $.ajax({
+                type: 'POST',
+                url: '../District/District_College_List',
+                dataType: 'json',
+                data: {
+                    taluka: $("#taluka_name").val(),
+                    type: $("#type").val(),
+                    Excel: Excel
+                },
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (data) {
+
+                    if (data.Result) {
+                        $("#state_insp").empty();
+
+                        Bind_Table(data.Response, "state_insp");
+                        if (Excel == "1") {
+
+                            window.location.href = "../Excel_Files/" + data.FileName + ".xlsx";
+
+                        }
+                    }
+                    else {
+                        Error_Alert(data.Message);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        }
+
+    });
+</script>
+

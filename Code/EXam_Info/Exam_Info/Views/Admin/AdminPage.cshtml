@@ -1,0 +1,201 @@
+﻿
+@{
+    ViewBag.Title = "AdminPage";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+
+
+
+<h2 style="text-align:center">Admin</h2>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #type {
+        width: 200px;
+        padding: 8px;
+    }
+
+    #Heading {
+        width: 200px;
+        padding: 5px;
+    }
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<form id="admin">
+    <div class="container">
+        @*<div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+            <div class="auth-form-transparent text-left p-3">*@
+        <br />
+        <div class="form-group">
+            <div class="row">
+                <input type="hidden" id="ID" name="Id" />
+                <div class="col-sm-3">
+                    <label for="Taluka_Code">Select Type</label><span style="color:Red">*</span><br />
+                    <select name="type" id="type">
+                        <option value="0">--Select Type--</option>
+                        <option value="Home Dashboard">Home Dashboard</option>
+                        <option value="College Dashboard">College Dashboard</option>
+                        <option value="District Dashboard">District Dashboard</option>
+                        <option value="Division Dashboard">Division Dashboard</option>
+                        <option value="State Dashboard">State Dashboard</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label for="College Name">Heading</label><span style="color:Red">*</span><br />
+                    @Html.TextBox("Heading")
+                </div>
+                <div class="col-sm-3">
+                    <label for="College Name">Attachment</label>
+                    <span class="required" style="color:red;font-weight:bold">*</span>
+                    <input type="file" id="imgfile" name="File" />
+                </div>
+                <div class="col-sm-2">
+                    <label></label><br />
+                    <center>
+                        <input type="submit" value="Submit" id="btn_sub" class="btn btn-success" />
+                    </center>
+                </div>
+            </div>
+            <br />
+            <input type="submit" value="Get Record" id="btn_rec" class="btn btn-success" />
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <center>
+            <table class="AppFormTable " style="background-color: #e7fafe;" id="tbl_admin">
+            </table>
+        </center>
+
+    </div>
+    @*</div>
+        </div>*@
+</form>
+
+
+<script>
+    $(document).ready(function () {
+
+        //Bind_Part2();
+
+        $("#btn_rec").click(function (e) {
+            Bind_Part2();
+            e.preventDefault();
+        });
+
+        $("#btn_sub").click(function (e) {
+            debugger
+            var formData = new FormData($(admin)[0]);
+            console.log(formData);
+            $.ajax({
+                url: "AdminPage",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (Data) {
+                    //Success_Alert(Data.Message);
+                    debugger;
+                    if (Data.Result) {
+                        alert(Data.Response);
+                        $(admin)[0].reset();
+                        $('#admin').find("#ID").val(0);
+                        Bind_Part2();
+                    }
+                    else {
+                        Error_Alert(Data.Response);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    Error_Alert(Data.Message);
+                }
+
+            });
+        });
+
+    });
+    function Bind_Part2() {
+        debugger
+        $.ajax({
+            url: "GetRecord",
+            type: "Post",
+            dataType: 'json',
+            data: {
+                type: $("#type").val(),
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (Data) {
+                debugger
+                var temp = "";
+                temp += `<tr><td>Sr.No.</td><td>Heading</td><td>Extension</td><td>Active</td><td>Edit</td><td>Active/Deactive</td></tr>`;
+                $("#tbl_admin").empty();
+                $.each(Data.Response, function (i, data) {
+                    var editurl = "EditStudentInfo('/Admin/GetStudentRecord/" + data.Id + "')";
+                    var delurl = "DelStudentInfo('/Admin/DelStudenRecord/" + data.Id + "')";
+                    temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Heading + `</td><td>` + data.Extension + `</td><td>` + data.Active + `</td><td>` + `<input type = "button" value = "Edit" onclick = ` + editurl + ` class="Edit_Delete"/>` + `</td><td>` + `<input type = "button" value = "Act/Deact" onclick="` + delurl + `" class="Edit_Delete"/>` + `</td></tr>`;
+
+                });
+                $("#tbl_admin").append(temp);
+
+
+
+            },
+            error: function (e1, e2, e3) {
+                Error_Alert(Data.Message);
+            }
+        });
+    }
+    function EditStudentInfo(url) {
+        debugger
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (response) {
+                if (response.Result) {
+                    $('#Heading').val(response.Response.Heading);
+                    $('#admin').find("#ID").val(response.Response.Id);
+
+                }
+            }
+        });
+    }
+    function DelStudentInfo(url) {
+        debugger
+        if (confirm('Are you sure want to deactivate this record ?') == true) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: function (response) {
+                    if (response.Result) {
+                        Bind_Part2();
+                        alert(response.Response);
+                    }
+                    else {
+                        alert(response.Response);
+                    }
+                }
+            });
+        }
+    }
+</script>

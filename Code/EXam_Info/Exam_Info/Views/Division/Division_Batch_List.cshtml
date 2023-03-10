@@ -1,0 +1,194 @@
+﻿@model Exam_Info.Models.Student_Model
+@{
+    ViewBag.Title = "Division_Batch_List";
+    Layout = "~/Views/Shared/Division_LayoutPage.cshtml";
+}
+
+
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #dist {
+        width: 526px;
+        padding: 8px;
+    }
+
+    #taluka {
+        width: 526px;
+        padding: 8px;
+    }
+
+    #btn_Excel {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Student Batch List</h2>
+    </div>
+    <div class="col-sm-6">
+        <input type="button" class="btn btn-success" id="btn_Excel" value="Download Excel"><br />
+    </div>
+</div>
+<br />
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<form id="batch_form">
+    <div class="row">
+        @Html.Hidden("Div_Code", @TempData["Division_Code"])
+        <div class="col-sm-4">
+            <label for="Division_List">Select District</label><span style="color:Red">*</span>
+            <select name="dist" id="dist">
+            </select>
+        </div>
+
+        <div class="col-sm-4">
+            <label for="Taluka_Code">Select Taluka</label><span style="color:Red">*</span>
+            <select name="taluka" id="taluka">
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <label>Select Batch :</label>
+            @Html.DropDownListFor(m => m.Batch, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Batch",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="B1", Value="B1"},
+            new SelectListItem{Text="B2", Value="B2"},
+            new SelectListItem{Text="B3", Value="B3"},
+            new SelectListItem{Text="B4", Value="B4"},
+            new SelectListItem{Text="B5", Value="B5"},
+            new SelectListItem{Text="B6", Value="B6"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+        <div class="col-sm-2">
+            <label></label><br />
+            <input type="button" class="btn btn-success" id="btn_submit" value="Submit"><br />
+        </div>
+    </div>
+    <br />
+    <br />
+    <center>
+        <table class="AppFormTable" id="tbl_batch" style="background-color: #e7fafe;"></table>
+    </center>
+</form>
+<script>
+    $(document).ready(function () {
+
+        $("#taluka").empty();
+        $("#dist").empty();
+
+        $.ajax({
+            type: 'POST',
+            url: '../Division/Get_District',
+            dataType: 'json',
+            data: {
+                divCode: $("#Div_Code").val()
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#dist").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+
+        $("#dist").change(function () {
+            debugger
+            $.ajax({
+                type: 'POST',
+                url: '../Division/Load_Taluka',
+                dataType: 'json',
+                data: {
+                    distCode: $("#dist").val()
+                },
+                success: function (Data) {
+                    $("#taluka").empty();
+                    for (var item in Data) {
+                        $("#taluka").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        });
+
+
+        $("#btn_submit").click(function () {
+
+            Get_Inspection_Record("0");
+
+        });
+
+        $("#btn_Excel").click(function () {
+
+            Get_Inspection_Record("1");
+
+        });
+
+
+        function Get_Inspection_Record(Excel) {
+            $.ajax({
+                type: 'POST',
+                url: '../Division/Division_Batch_List',
+                dataType: 'json',
+                data: {
+                    dist: $("#dist").val(),
+                    taluka: $("#taluka").val(),
+                    batch: $("#Batch").val(),
+                    Excel: Excel
+                },
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (data) {
+
+                    var temp = "";
+                    temp += `<thead><tr><td>Sr.No.</td><td>Seat No</td><td>Name</td></tr></thead><tbody`;
+                    if (data.Result) {
+                        $("#tbl_batch").empty();
+                        $.each(data.Response, function (i, data) {
+                            temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Seat_No + `</td><td>` + data.Name + `</td></tr>`;
+                        });
+                        temp += `</tbody>`;
+                        $("#tbl_batch").append(temp);
+
+                        if (Excel == "1") {
+
+                            window.location.href = "../Excel_files/" + data.FileName + ".xlsx";
+
+                        }
+                    }
+                    else {
+                        Error_Alert(data.Response);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        }
+
+    });
+
+</script>
+
+
+
+

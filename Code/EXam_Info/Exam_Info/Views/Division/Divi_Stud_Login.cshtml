@@ -1,0 +1,224 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@*@model Exam_Info.Models.Tbl_Code_Master*@
+
+@model IPagedList<Exam_Info.Models.Student_Model>
+@{
+    ViewBag.Title = "Divi_Stud_Login";
+    Layout = "~/Views/Shared/Division_LayoutPage.cshtml";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #dist {
+        width: 526px;
+        padding: 8px;
+    }
+
+    #taluka {
+        width: 526px;
+        padding: 8px;
+    }
+
+    #btn_Excel {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Division Student List</h2>
+    </div>
+    <div class="col-sm-6">
+        <input type="button" class="btn btn-success" id="btn_Excel" value="Download Excel"><br />
+    </div>
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+@using (Html.BeginForm("Divi_Stud_Login", "Division", FormMethod.Get))
+{
+    <div>
+        @Html.Hidden("Div_Code", @TempData["Division_Code"])
+        <div class="row">
+
+            <div class="col-sm-4">
+                <label for="Division_List">Select District</label><span style="color:Red">*</span>
+                <select name="dist" id="dist">
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <label for="Taluka_Code">Select Taluka</label><span style="color:Red">*</span>
+                <select name="taluka" id="taluka">
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <center>
+                    <label></label><br />
+                    <input type="submit" value="Submit" id="btn_sub" class="btn btn-success" />
+                </center>
+            </div>
+        </div>
+
+        <br />
+        @if (Model != null)
+        {
+            <center>
+                <table class="AppFormTable " id="state_insp" style="background-color: #e7fafe;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Sr.No.
+                            </th>
+                            <th>
+                                Index No
+                            </th>
+                            <th>
+                                Seat No
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 1;}
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@i</span>
+                                    @{i++;}
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Index_No)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Seat_No)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Name)
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </center>
+        }
+        <br />
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Divi_Stud_Login", new { page, dist = Request.QueryString["dist"], taluka = Request.QueryString["taluka"] }))
+
+
+}
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#taluka").empty();
+        $("#dist").empty();
+
+        $.ajax({
+            type: 'POST',
+            url: '../Division/Get_District',
+            dataType: 'json',
+            data: {
+                divCode: $("#Div_Code").val()
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#dist").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+
+        $("#dist").change(function () {
+
+            $.ajax({
+                type: 'POST',
+                url: '../Division/Load_Taluka',
+                dataType: 'json',
+                data: {
+                    distCode: $("#dist").val()
+                },
+                success: function (Data) {
+                    $("#taluka").empty();
+                    for (var item in Data) {
+                        $("#taluka").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        });
+
+
+        $("#btn_Excel").click(function () {
+
+            Get_Inspection_Record("1");
+
+        });
+
+
+        function Get_Inspection_Record(Excel) {
+
+            $.ajax({
+                type: 'POST',
+                url: '../Division/Division_List',
+                dataType: 'json',
+                data: {
+                    dist: $("#dist").val(),
+                    taluka: $("#taluka").val(),
+                    Excel: Excel
+                },
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (data) {
+
+                    if (data.Result) {
+
+                        if (Excel == "1") {
+
+                            window.location.href = "../State/" + data.FileName + ".xlsx";
+
+                        }
+                    }
+                    else {
+                        Error_Alert(data.Response);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        }
+
+
+    });
+</script>
+@*@Html.PagedListPager(Model, page => Url.Action("Divi_Stud_Login", new { page }))*@
+

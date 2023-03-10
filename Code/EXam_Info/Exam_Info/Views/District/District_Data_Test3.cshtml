@@ -1,0 +1,156 @@
+﻿@model Exam_Info.Models.Tbl_District_Co_Ordinator_Registration
+@{
+    ViewBag.Title = "District_Data_Test3";
+    Layout = "~/Views/Shared/District_LayoutPage.cshtml";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #District {
+        width: 526px;
+        padding: 5px;
+    }
+
+    #btn_submit {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>District Data Test3</h2>
+    </div>
+    <div class="col-sm-6">
+        <input type="button" class="btn btn-success" id="btn_submit" value="Download Excel"><br />
+    </div>
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<div class="table-responsive pt-3  ">
+    <div class="row">
+
+        <div class="col-sm-4">
+            <label for="Division_List">District</label><span style="color:Red">*</span><br />
+
+            @Html.TextBox("District", TempData["District_Name"])
+            @Html.ValidationMessageFor(model => model.District_Code, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-4">
+            <label for="Taluka_Code">Select Taluka</label><span style="color:Red">*</span>
+            @Html.DropDownListFor(model => model.Taluka_Code, new SelectList(string.Empty, "Value", "Text"), "--Select Taluka--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Taluka_Code, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-1">
+            <center>
+                <label></label><br />
+                <input type="submit" value="Submit" id="btn_sub" class="btn btn-success" />
+            </center>
+        </div>
+    </div>
+    <br />
+
+    <center>
+        <table class="AppFormTable " id="state_insp" style="background-color: #e7fafe;">
+        </table>
+    </center>
+</div>
+<br />
+
+<script>
+
+    $(document).ready(function () {
+        $("#Taluka_Code").empty();
+        $.ajax({
+            type: 'POST',
+            url: '../District/Load_District',
+            dataType: 'json',
+            data: {
+                distCode: $("#District").val()
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#Taluka_Code").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+        $("#btn_sub").click(function () {
+
+            Get_Inspection_Record("0");
+
+        });
+        $("#btn_submit").click(function () {
+
+            Get_Inspection_Record("1");
+
+        });
+
+        function Get_Inspection_Record(Excel) {
+            debugger
+            $.ajax({
+                type: 'POST',
+                url: '../District/District_Data_Test3',
+                dataType: 'json',
+                data: {
+                    taluka: $("#Taluka_Code").val(),
+                    Excel: Excel
+                },
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (data) {
+                    var temp = "";
+                    temp += `<thead><tr><td>Sr.No.</td><td>Index No New</td><td>Index No Old</td><td>Date Time</td><td>MAC</td><td>Login</td><td>QP</td><td>Hit</td></tr></thead><tbody`;
+                    if (data.Result) {
+                        $("#state_insp").empty();
+
+                        var list2 = JSON.parse(JSON.stringify(data.Response));
+                        for (i in list2) {
+                            delete list2[i].ID;
+
+
+                            var aa = list2[i].Datetime;
+                            var JavaScriptDate = new Date(parseInt(aa.substr(6)));
+                            var dateObject = new Date(JavaScriptDate);
+                            var daate = dateObject.getDate();
+                            var Month = dateObject.getMonth() + 1;
+                            var year = dateObject.getFullYear();
+                            list2[i].Date_Time = daate + "/" + Month + "/" + year;
+                        }
+                        $.each(list2, function (i, data) {
+                            temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Index_NoN + `</td><td>` + data.Index_No + `</td><td>` + data.Datetime + `</td><td>` + data.MAC + `</td><td>` + data.Login + `</td><td>` + data.QP + `</td><td>` + data.Hit + `</td></tr>`;
+                        });
+                        temp += `</tbody>`;
+                        $("#state_insp").append(temp);
+                        /* Bind_Table(list2, "state_insp");*/
+                        if (Excel == "1") {
+                            window.location.href = "../Excel_files/" + data.FileName + ".xlsx";
+                        }
+                    }
+                    else {
+                        Error_Alert(data.Message);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        }
+
+    });
+</script>

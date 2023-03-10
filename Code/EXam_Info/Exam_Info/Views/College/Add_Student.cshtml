@@ -1,0 +1,147 @@
+﻿@model Exam_Info.Models.Tbl_Login
+@{
+    ViewBag.Title = "Add_Student";
+    Layout = "~/Views/Shared/State_LayoutPage.cshtml";
+
+    List<SelectListItem> Stream = new List<SelectListItem>();
+    Stream.Add(new SelectListItem { Text = "Science", Value = "97" });
+    Stream.Add(new SelectListItem { Text = "Commerce", Value = "98", });
+    Stream.Add(new SelectListItem { Text = "Arts", Value = "99" });
+
+    List<SelectListItem> Hand = new List<SelectListItem>();
+
+    Hand.Add(new SelectListItem { Text = "00", Value = "00" });
+    Hand.Add(new SelectListItem { Text = "01", Value = "01", });
+    Hand.Add(new SelectListItem { Text = "02", Value = "02" });
+    Hand.Add(new SelectListItem { Text = "03", Value = "03", });
+    Hand.Add(new SelectListItem { Text = "04", Value = "04" });
+    Hand.Add(new SelectListItem { Text = "05", Value = "05", });
+    Hand.Add(new SelectListItem { Text = "06", Value = "06" });
+    Hand.Add(new SelectListItem { Text = "07", Value = "07", });
+    Hand.Add(new SelectListItem { Text = "08", Value = "08" });
+    Hand.Add(new SelectListItem { Text = "09", Value = "09", });
+    Hand.Add(new SelectListItem { Text = "10", Value = "10" });
+    Hand.Add(new SelectListItem { Text = "11", Value = "11", });
+    Hand.Add(new SelectListItem { Text = "12", Value = "12" });
+    Hand.Add(new SelectListItem { Text = "13", Value = "13", });
+    Hand.Add(new SelectListItem { Text = "14", Value = "14" });
+    Hand.Add(new SelectListItem { Text = "15", Value = "15" });
+    Hand.Add(new SelectListItem { Text = "16", Value = "16", });
+    Hand.Add(new SelectListItem { Text = "17", Value = "17" });
+    Hand.Add(new SelectListItem { Text = "18", Value = "18", });
+    Hand.Add(new SelectListItem { Text = "19", Value = "19" });
+    Hand.Add(new SelectListItem { Text = "20", Value = "20", });
+    Hand.Add(new SelectListItem { Text = "21", Value = "21" });
+    Hand.Add(new SelectListItem { Text = "22", Value = "22", });
+    Hand.Add(new SelectListItem { Text = "23", Value = "23" });
+    Hand.Add(new SelectListItem { Text = "24", Value = "24", });
+    Hand.Add(new SelectListItem { Text = "25", Value = "25" });
+    Hand.Add(new SelectListItem { Text = "26", Value = "26", });
+    Hand.Add(new SelectListItem { Text = "27", Value = "27" });
+    Hand.Add(new SelectListItem { Text = "28", Value = "28", });
+    Hand.Add(new SelectListItem { Text = "29", Value = "29" });
+    Hand.Add(new SelectListItem { Text = "30", Value = "30" });
+    Hand.Add(new SelectListItem { Text = "31", Value = "31", });
+    Hand.Add(new SelectListItem { Text = "32", Value = "32" });
+    Hand.Add(new SelectListItem { Text = "33", Value = "33", });
+    Hand.Add(new SelectListItem { Text = "34", Value = "34" });
+    Hand.Add(new SelectListItem { Text = "35", Value = "35", });
+    Hand.Add(new SelectListItem { Text = "36", Value = "36" });
+    Hand.Add(new SelectListItem { Text = "37", Value = "37" });
+    Hand.Add(new SelectListItem { Text = "38", Value = "38", });
+    Hand.Add(new SelectListItem { Text = "39", Value = "39" });
+    Hand.Add(new SelectListItem { Text = "40", Value = "40", });
+    Hand.Add(new SelectListItem { Text = "41", Value = "41" });
+    Hand.Add(new SelectListItem { Text = "42", Value = "42", });
+    Hand.Add(new SelectListItem { Text = "43", Value = "43" });
+    Hand.Add(new SelectListItem { Text = "44", Value = "44", });
+    Hand.Add(new SelectListItem { Text = "45", Value = "45" });
+    Hand.Add(new SelectListItem { Text = "46", Value = "46", });
+    Hand.Add(new SelectListItem { Text = "47", Value = "47" });
+    Hand.Add(new SelectListItem { Text = "48", Value = "48", });
+    Hand.Add(new SelectListItem { Text = "49", Value = "49" });
+    Hand.Add(new SelectListItem { Text = "50", Value = "50", });
+
+}
+
+
+
+<style>
+    select #Hand {
+        width: 60px;
+        height: 30px;
+        text-align: center;
+    }
+    
+    </style>
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Add_Student </h2>
+    </div>
+
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+
+@using (Html.BeginForm("Add_Student", "College", FormMethod.Post))
+{
+
+
+    <div class="table-responsive pt-3  ">
+        <div class="row">
+
+            <div class="col-sm-2">
+            
+
+                @Html.LabelFor(model => model.Seat_No, "Seat_No", htmlAttributes: new { @class = "control-label " })
+                @Html.EditorFor(model => model.Seat_No, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Seat_No, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-sm-2">
+                <label for="Stream">Select Stream</label><span style="color:Red">*</span>
+
+                @Html.DropDownListFor(model => model.Stream, Stream, "--Select Stream--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Stream, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Mother_Name, "Mother_Name", htmlAttributes: new { @class = "control-label " })
+                <span class="required" style="color:red;font-weight:bold">*</span>
+                @Html.EditorFor(model => model.Mother_Name, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.Mother_Name, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Name, "Name", htmlAttributes: new { @class = "control-label " })
+                <span class="required" style="color:red;font-weight:bold">*</span>
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-sm-2">
+                <label for="Hand">Select Handicap Type</label>
+
+                <span style="color:Red">*</span>
+
+                @Html.DropDownListFor(model => model.Hand, Hand, "--Select Handicape Type--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Hand, "", new { @class = "text-danger" })
+
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-2">
+            <label></label><br />
+            <input type="submit" value="Submit" id="btn_sub" class="btn btn-success" />
+        </div>
+    </div>
+
+}

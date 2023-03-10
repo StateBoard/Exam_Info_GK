@@ -1,0 +1,54 @@
+﻿@model Exam_Info.Models.Tbl_State_Co_Ordinator_Registration
+@{
+    ViewBag.Title = "State_Dashboard";
+    Layout = "~/Views/Shared/State_LayoutPage.cshtml";
+}
+
+<div class="header" style="text-align:center">
+    <h2 class="heading"><span class="mdi mdi-domain"></span>State Co-Ordinator Dashboard</h2>
+</div>
+<div class="container-fluid">
+    <div class="row">
+
+        <table id="statedash"></table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: 'POST',
+            url: '../Admin/State_Dash_Details',
+            dataType: 'json',
+            data: {
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (data) {
+
+                var temp = "";
+
+                if (data.Result) {
+                    $("#statedash").empty();
+                    $.each(data.Response, function (i, data) {
+                        debugger
+                        temp += `<tr><td> <h4><a class="blink" style="color:red" href="~/Attachments/` + data.ID + `.jpg">` + (i + 1) + `) ` + data.Heading + `</a></h4></td></tr>`;
+                    });
+                    temp += `</tbody>`;
+                    $("#statedash").append(temp);
+                }
+                else {
+                    Error_Alert(data.Response);
+                }
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    });
+</script>

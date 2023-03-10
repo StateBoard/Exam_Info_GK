@@ -1,0 +1,166 @@
+﻿@*@model IEnumerable<Exam_Info.Models.Tbl_Login>
+@{
+    ViewBag.Title = "Attendance";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+}
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .radio_chk {
+        width: 18px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
+            <h2 align="center" style="color:black;"><b>Student Registered For GK Examination 2022</b></h2>
+            <br />
+            <span style="color:black;">Index Number : @Session["Index_No"]</span><br />
+            <input type="hidden" name="IndexNo" id="IndexNo" value=@Session["Index_No"] />
+            <div style="overflow-x: auto;display: flex;" class="mobilediv">
+
+                <table class="AppFormTable " id="tbl_record" style="background-color: #e7fafe;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Sr No
+                            </th>
+                            <th>
+                                Seat No
+                            </th>
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Present / Absent
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 1;}
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@i</span>
+                                    @{i++;}
+                                    @Html.Hidden("hd_id", item.id)
+                                </td>
+                                <td>@item.Seat_No </td>
+                                <td>@item.Name <br /></td>
+                                <td>
+                                    @if (item.Attendance == "present")
+                                    {
+                                        <input type="radio" class="radio_chk" id=@item.id name=@item.id value="present" checked>
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" class="radio_chk" id=@item.id name=@item.id value="present">
+                                    }
+                                    Present
+
+                                    @if (item.Attendance == "absent")
+                                    {
+                                        <input type="radio" class="radio_chk" id=@item.id name=@item.id value="absent" checked>
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" class="radio_chk" id=@item.id name=@item.id value="absent">
+                                    }
+
+                                    Absent
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+            </div>
+            <br />
+            <button type="button" class="btn btn-primary " id="btn_final_submit" value="Submit" onclick="return confirm('Do you want to save ?')" />Verify & Submit
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+
+         $('#tbl_record').on('change', 'input', function () {
+        var row = $(this).closest('tr');
+        var radio_val = row.find("input[id=hd_id]").val()
+
+             $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Get_Student")',
+                dataType: 'json',
+                data: {
+                    Index_id: row.find("input[id=hd_id]").val(),
+                    Checked: row.find("input[id=" + radio_val + "]:checked").val()
+                },
+                beforeSend: function () {
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        if (Data.Message == 0) {
+
+                        }
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (ex) {
+
+                }
+             });
+         });
+
+          $("#btn_final_submit").click(function () {
+             $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Student_Remaining")',
+                dataType: 'json',
+                data: {
+
+                },
+                beforeSend: function () {
+                    $(".rounded").css("filter", "brightness(75%)");
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                    $(".rounded").css("filter", "brightness(100%)");
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+
+                        Success_Alert(Data.Message);
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                    }
+                },
+                error: function (ex) {
+
+                }
+            });
+        });
+
+
+
+    });
+
+</script>*@

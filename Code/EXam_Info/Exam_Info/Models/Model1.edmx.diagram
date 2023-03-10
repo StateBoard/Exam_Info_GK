@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2263e69b52ce4e268e8ec3f1698a97fe" Name="Diagram1">
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Batch" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Code_Master" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_College_Registration" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_District_Co_Ordinator_Details" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_District_Co_Ordinator_Registration" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Division_Co_Ordinator_Registration" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_DTT1" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_DTT2" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Inspection" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Inspection_Basic_Info" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Login1" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Mac" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Password" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Reschedule" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_State_Co_Ordinator_Registration" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Student" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_ITCOLLEGELIST" Width="1.5" PointX="7.375" PointY="13.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Reschedule_Student" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Reschedule_College" Width="1.5" PointX="9.375" PointY="14.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Attendance" Width="1.5" PointX="15.375" PointY="4.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Attendance_Web" Width="1.5" PointX="15.375" PointY="7.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Login" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_DTT3" Width="1.5" PointX="15.375" PointY="10.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Batch_Activation" Width="1.5" PointX="15.375" PointY="14.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Admin_tbl" Width="1.5" PointX="5.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_41to45_Ans" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Reschedule_ApproveBy_Division" Width="1.5" PointX="17.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.All_tbl_Final_Ans" Width="1.5" PointX="17.75" PointY="7.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_100_Ans" Width="1.5" PointX="7.75" PointY="17.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_11to15_Ans" Width="1.5" PointX="9.75" PointY="17.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_1to5_Ans" Width="1.5" PointX="11.75" PointY="18.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_21to25_Ans" Width="1.5" PointX="13.75" PointY="18.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_26to30_Ans" Width="1.5" PointX="19.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_31to35_Ans" Width="1.5" PointX="0.5" PointY="19.375" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_36to40_Ans" Width="1.5" PointX="2.75" PointY="19.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_46to50_Ans" Width="1.5" PointX="19.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_51to55_Ans" Width="1.5" PointX="4.75" PointY="19.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_56to60_Ans" Width="1.5" PointX="19.75" PointY="8.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_61to65_Ans" Width="1.5" PointX="19.75" PointY="12.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_66to70_Ans" Width="1.5" PointX="19.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_6to10_Ans" Width="1.5" PointX="6.75" PointY="20.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_71to75_Ans" Width="1.5" PointX="19.75" PointY="20.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_76to80_Ans" Width="1.5" PointX="21.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_81to85_Ans" Width="1.5" PointX="21.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_86to90_Ans" Width="1.5" PointX="21.75" PointY="8.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_91to95_Ans" Width="1.5" PointX="8.75" PointY="21.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_96to97_Ans" Width="1.5" PointX="21.75" PointY="12.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_98_Ans" Width="1.5" PointX="21.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_99_Ans" Width="1.5" PointX="21.75" PointY="19.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Final_Ans" Width="1.5" PointX="11.375" PointY="22.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Decode_Answer" Width="1.5" PointX="13.375" PointY="22.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Decoded_Answer_Sheets_Sada" Width="1.5" PointX="22.375" PointY="22.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Admin_Login" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_File_Upload_Details" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.File_Upload_Reason" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="GKJ_2022Model.Tbl_Final_Ans_BK" Width="1.5" PointX="0.75" PointY="23.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

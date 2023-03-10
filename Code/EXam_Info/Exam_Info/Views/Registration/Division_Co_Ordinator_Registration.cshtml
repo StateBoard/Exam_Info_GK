@@ -1,0 +1,155 @@
+﻿
+@model Exam_Info.Models.DivisionValidation
+@{
+    ViewBag.Title = "Division_Co_Ordinator_Registration";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<h2>
+    <center>
+        <b>
+            Division Co-Ordinator Registration
+        </b>
+    </center>
+</h2>
+
+<style>
+    label {
+        font-size: 15px !important;
+        font-weight: bold;
+    }
+</style>
+<form id="submit_form">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+
+
+            <div class="auth-form-transparent text-left p-3">
+
+
+                <br />
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="Index No">Index No</label><span style="color:Red">*</span>
+                            @Html.TextBoxFor(model => model.Index_No, new { @class = "form-control", @placeholder = "Index No", @name = "Index_No", @required = "required", maxLength = 7 })
+                            @Html.ValidationMessageFor(model => model.Index_No, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="College Name">College Name</label><span style="color:red">*</span>
+                            @Html.TextBoxFor(model => model.College_Name, new { @class = "form-control", @placeholder = "College Name", @name = "College_Name", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.College_Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="College Addres">College Address</label><span style="color:Red">*</span>
+                            @Html.TextBoxFor(model => model.College_Address, new { @class = "form-control", @placeholder = "College Name", @name = "College_Name", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.College_Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+
+                    <div class="col-sm-4">
+
+                        <label for="Coordinator Name">Co-ordinator Name</label><span style="color:Red">*</span>
+                        @Html.TextBoxFor(model => model.Coordinator_Name, new { @class = "form-control", @placeholder = "Co-ordinator Name", @name = "Coordinator Name ", maxLength = 10, @required = "required" })
+                        @Html.ValidationMessageFor(model => model.Coordinator_Name, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+
+                    <div class="col-sm-4">
+                        <label for="Coordinator Mobile">Co-ordinator Mobile</label><span style="color:Red">*</span>
+                        @Html.TextBoxFor(model => model.Coordinator_Mobile, new { @class = "form-control", @placeholder = "Co-ordinator Mobile", @name = "Coordinator Mobile ", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.Coordinator_Mobile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="Coordinator 
+                               ">Co-ordinator Email</label><span style="color:Red">*</span>
+                        @Html.TextBoxFor(model => model.Coordinator_Email, new { @class = "form-control", @placeholder = "Co-ordinator Email", @name = "Coordinator Email " })
+                        @Html.ValidationMessageFor(model => model.Coordinator_Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="Coordinator Eduction">Co-ordinator Eduction</label><span style="color:Red">*</span>
+                        @Html.TextBoxFor(model => model.Coordinator_Eduction, new { @class = "form-control", @placeholder = "Co-ordinator Eduction", @name = "Coordinator Eduction "})
+                        @Html.ValidationMessageFor(model => model.Coordinator_Eduction, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="Password">Password</label><span style="color:Red">*</span>
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password", @name = "Password ", @type = "Password" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="Confirm_Password">Confirm Password</label><span style="color:Red">*</span>
+                        @Html.TextBoxFor(model => model.Confirm_Password, new { @class = "form-control", @placeholder = "Confirm Password", @name = "Confirm_Password" })
+                        @Html.ValidationMessageFor(model => model.Confirm_Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="col-sm-2">
+                    <center>
+                        <input type="button" id="btn_submit" class="btn btn-block btn-primary btn-lg font-weight-bolder auth-form-btn" value="SUBMIT" onclick="return confirm('Do you want to save ?')" style="background-color: #3eadcf;font-weight:bold">
+                    </center>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+
+        $("#btn_submit").click(function (e) {
+            var formData = new FormData($(submit_form)[0]);
+
+            $.ajax({
+                url: "Save_Division_Co_Ordinator_Registration",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        Success_Alert(Data.Response);
+                    }
+                    else {
+                        Error_Alert(Data.Response);
+                    }
+
+                },
+                error: function (e1, e2, e3) {
+                    Error_Alert(Data.Response);
+                }
+            });
+        })
+
+    })</script>

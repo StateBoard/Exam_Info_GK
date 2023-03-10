@@ -1,0 +1,251 @@
+﻿@model IPagedList<Exam_Info.Models.Tbl_DTT3>
+@{
+    ViewBag.Title = "Division_Data_Test3";
+    Layout = "~/Views/Shared/Division_LayoutPage.cshtml";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #dist {
+        width: 526px;
+        padding: 8px;
+    }
+
+    #taluka {
+        width: 526px;
+        padding: 8px;
+    }
+
+    #btn_submit {
+        width: 200px;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Division Data Test2</h2>
+    </div>
+    <div class="col-sm-6">
+        <input type="button" class="btn btn-success" id="btn_submit" value="Download Excel"><br />
+    </div>
+</div>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+@using (Html.BeginForm("Division_Data_Test3", "Division", FormMethod.Get))
+{
+    <div class="table-responsive pt-3  ">
+        @Html.Hidden("Div_Code", @TempData["Division_Code"])
+        <div class="row">
+
+            <div class="col-sm-4">
+                <label for="Division_List">Select District</label><span style="color:Red">*</span>
+                <select name="dist" id="dist">
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <label for="Taluka_Code">Select Taluka</label><span style="color:Red">*</span>
+                <select name="taluka" id="taluka">
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <center>
+                    <label></label><br />
+                    <input type="submit" value="Submit" id="btn_sub" class="btn btn-success" />
+                </center>
+            </div>
+        </div>
+        <br />
+
+        <center>
+            <table class="AppFormTable " style="background-color: #e7fafe;">
+                <tr>
+                    <th>
+                        Sr. No
+                    </th>
+                    <th>
+                        Index No New
+                    </th>
+                    <th>
+                        Index No Old
+                    </th>
+
+                    <th>
+                        Date Time
+                    </th>
+                    <th>
+                        MAC
+                    </th>
+                    <th>
+                        Login
+                    </th>
+                    <th>
+                        QP
+                    </th>
+                    <th>
+                        Hit
+                    </th>
+
+                </tr>
+                @{int i = 1;}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span>@i</span>
+                            @{i++;}
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Index_NoN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Index_No)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Datetime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.MAC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Login)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.QP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Hit)
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </center>
+        @Html.PagedListPager(Model, page => Url.Action("Division_Data_Test2", new { page, dist = Request.QueryString["dist"], taluka = Request.QueryString["taluka"] }))
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        $("#dist").empty();
+
+        $.ajax({
+            type: 'POST',
+            url: '../Division/Get_District',
+            dataType: 'json',
+            data: {
+                divCode: $("#Div_Code").val()
+            },
+            success: function (Data) {
+                for (var item in Data) {
+                    $("#dist").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                }
+
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+        $("#dist").change(function () {
+
+            $("#taluka_name").empty();
+            $.ajax({
+                type: 'POST',
+                url: '../District/Get_Taluka',
+                dataType: 'json',
+                data: {
+                    distCode: $("#dist").val()
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#taluka").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        });
+
+
+        //$("#btn_sub").click(function () {
+
+        //    Get_Inspection_Record("0");
+
+        //});
+        $("#btn_submit").click(function () {
+
+            Get_Inspection_Record("1");
+
+        });
+        function Get_Inspection_Record(Excel) {
+            debugger
+            $.ajax({
+                type: 'POST',
+                url: '../Division/Division_Data_Test3',
+                dataType: 'json',
+                data: {
+                    district: $("#dist").val(),
+                    taluka: $("#taluka").val(),
+                    Excel: Excel
+                },
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (data) {
+
+                    if (data.Result) {
+                        //$("#div_insp").empty();
+
+                        //var list2 = JSON.parse(JSON.stringify(data.Response));
+                        //for (i in list2) {
+                        //    delete list2[i].ID;
+                        //    delete list2[i].Active;
+
+
+                        //    var aa = list2[i].Datetime;
+                        //    var JavaScriptDate = new Date(parseInt(aa.substr(6)));
+                        //    var dateObject = new Date(JavaScriptDate);
+                        //    var daate = dateObject.getDate();
+                        //    var Month = dateObject.getMonth() + 1;
+                        //    var year = dateObject.getFullYear();
+                        //    list2[i].Date_Time = daate + "/" + Month + "/" + year;
+                        //}
+                        //Bind_Table(list2, "div_insp");
+                        if (Excel == "1") {
+                            window.location.href = "../State/" + data.FileName + ".xlsx";
+                        }
+                    }
+                    else {
+                        Error_Alert(data.Message);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        }
+    });
+
+</script>
+
+

@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "College_Reschedule_Report";
+    Layout = "~/Views/Shared/College_LayoutPage.cshtml";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
+            <h2 align="center" style="color:black;"><b>College Reschedule Report</b></h2>
+            <br />
+            <div style="overflow-x: auto;display: flex;" class="mobilediv">
+
+                <table class="AppFormTable " id="tbl_record" style="background-color: #e7fafe;">
+                </table>
+                <br />
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: 'POST',
+            url: '../College/GetReschedule',
+            dataType: 'json',
+            data: {
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (data) {
+
+                var temp = "";
+                temp += `<thead><tr><td>Sr.No.</td><td>Seat No</td><td>Name</td><td>Initial Batch</td><td>Reschedule Batch</td><td>Approval By Division</td><td>Approval By OLE</td><td>File</td></tr></thead><tbody`;
+                if (data.Result) {
+                    $("#tbl_record").empty();
+                    $.each(data.Response, function (i, data) {
+                        debugger
+                        temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Seat_No + `</td><td>` + data.Name + `</td><td>` + data.Initial_Batch + `</td><td>` + data.Reschedule_Batch + `</td><td>` + data.Approved_By_Division + `</td><td>` + data.Approved_By_OLE + `</td><td>` + `<a style="color:red" target="_blank" href="../Reschedule_Files/` + data.Index_No + `/` + data.Record_ID + `.jpg">Click Here to Download File</a></td></tr>`;
+                    });
+                    temp += `</tbody>`;
+                    $("#tbl_record").append(temp);
+                }
+                else {
+                    Error_Alert(data.Response);
+                }
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    });
+</script>
